@@ -16,7 +16,7 @@ project at Nashville Software School.
 * Create-React-App
 
 ## Entity Relationship Diagram
-![ERD] (/BandAid/images/bandaid_erd.png)
+![ERD](/BandAid/images/bandaid_erd.png)
 
 ## How to run this app
 Note: To run this app you will need a firebase account and a new project.

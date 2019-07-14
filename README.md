@@ -1,6 +1,4 @@
 # Band ★ Aid
-
-## Description
 A networking platform connecting bands with talented musicians. This is my full-stack capstone
 project at Nashville Software School.
 

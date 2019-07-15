@@ -14,5 +14,7 @@ namespace BandAid.Models
         public string LogoUrl { get; set; }
         public DateTime DateCreated { get; set; }
         public bool Inactive { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
     }
 }

@@ -38,8 +38,8 @@ namespace BandAid.Data
             }
         }
 
-        public Band AddBand(string name, string genre, string description, 
-            string logoUrl, DateTime dateCreated, bool inactive)
+        public Band AddBand(string name, string genre, string description, string logoUrl, 
+            DateTime dateCreated, bool inactive, string city, string state)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -50,10 +50,12 @@ namespace BandAid.Data
                         [Description],
                         [LogoUrl],
                         [DateCreated],
-                        [Inactive])
+                        [Inactive],
+                        [City],
+                        [State])
                     Output inserted.*
-                    Values(@name, @genre, @description, 
-                    @logourl, @datecreated, @inactive)";
+                    Values(@name, @genre, @description, @logourl, 
+                    @datecreated, @inactive, @city, @state)";
 
                 var parameters = new
                 {
@@ -62,7 +64,9 @@ namespace BandAid.Data
                     Description = description,
                     LogoUrl = logoUrl,
                     DateCreated = dateCreated,
-                    Inactive = inactive
+                    Inactive = inactive,
+                    City = city,
+                    State = state
                 };
 
                 var newBand = db.QueryFirstOrDefault<Band>(insertQuery, parameters);
@@ -86,7 +90,9 @@ namespace BandAid.Data
                             description = @description,
                             logUrl = @logourl,
                             dateCreated = @datecreated,
-                            inactive = @inactive
+                            inactive = @inactive,
+                            city = @city,
+                            state = @state
                         Where id = @id";
 
                 var rowsAffected = db.Execute(updateQuery, bandToUpdate);

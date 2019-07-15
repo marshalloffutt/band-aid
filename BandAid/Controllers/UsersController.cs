@@ -58,7 +58,8 @@ namespace BandAid.Controllers
                 createRequest.State,
                 createRequest.Instrument,
                 createRequest.YearsOfExp,
-                createRequest.ImageUrl);
+                createRequest.ImageUrl,
+                createRequest.Inactive);
 
             return Created($"api/user/{newUser.Id}", newUser);
         }
@@ -68,7 +69,15 @@ namespace BandAid.Controllers
         {
             var updatedUser = _userRepository.Update(user);
 
-            return Ok(user);
+            return Ok(updatedUser);
+        }
+
+        [HttpPut("deactivate/{id}")]
+        public ActionResult deactivate(User user)
+        {
+            var deactivatedUser = _userRepository.Deactivate(user);
+
+            return Ok(deactivatedUser);
         }
     }
 }

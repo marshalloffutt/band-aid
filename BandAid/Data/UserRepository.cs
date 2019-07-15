@@ -16,7 +16,10 @@ namespace BandAid.Data
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var users = db.Query<User>("Select * from [User]").ToList();
+                var users = db.Query<User>(@"
+                Select *
+                From [User]
+                Where inactive = 0").ToList();
 
                 return users;
             }
@@ -36,7 +39,7 @@ namespace BandAid.Data
         }
 
         public User AddUser(string firstName, string lastName, string email, DateTime dateCreated, long phone,
-            string address, string city, string state, string instrument, int yearsOfExp, string imageUrl)
+            string address, string city, string state, string instrument, int yearsOfExp, string imageUrl, bool inactive)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -52,10 +55,11 @@ namespace BandAid.Data
                         [State],
                         [Instrument],
                         [YearsOfExp],
-                        [ImageUrl])
+                        [ImageUrl],
+                        [Inactive])
                     Output inserted.*
-                    Values(@firstname, @lastname, @email, @datecreated, @phone,  
-                    @address, @city, @state, @instrument, @yearsofexp, @imageurl)";
+                    Values(@firstname, @lastname, @email, @datecreated, @phone, @address,  
+                    @city, @state, @instrument, @yearsofexp, @imageurl, @inactive)";
 
                 var parameters = new
                 {
@@ -69,7 +73,8 @@ namespace BandAid.Data
                     State = state,
                     Instrument = instrument,
                     YearsOfExp = yearsOfExp,
-                    ImageUrl = imageUrl
+                    ImageUrl = imageUrl,
+                    Inactive = inactive,
                 };
 
                 var newUser = db.QueryFirstOrDefault<User>(insertQuery, parameters);
@@ -99,7 +104,8 @@ namespace BandAid.Data
                             state = @state,
                             instrument = @instrument,
                             yearsOfExp = @yearsofexp,
-                            imageUrl = @imageurl
+                            imageUrl = @imageurl,
+                            inactive = @inactive
                         Where id = @id";
 
                 var rowsAffected = db.Execute(updateQuery, userToUpdate);
@@ -112,6 +118,24 @@ namespace BandAid.Data
                 else throw new Exception("Could not update user");
             }
 
+        }
+
+        public bool Deactivate(User userToDeactivate)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var updateQuery = @"
+                    Update [User]
+                    Set inactive = 1
+                    Where id = @id";
+
+                var rowsAffected = db.Execute(updateQuery, userToDeactivate);
+
+                if (rowsAffected == 1)
+                {
+                    return true;
+                } else throw new Exception("Could not deactivate account");
+            }
         }
     }
 }

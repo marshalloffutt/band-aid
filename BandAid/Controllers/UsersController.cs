@@ -31,6 +31,14 @@ namespace BandAid.Controllers
             return Ok(Users);
         }
 
+        [HttpGet("{id}")]
+        public ActionResult GetSingleUser(int id)
+        {
+            var user = _userRepository.GetSingle(id);
+
+            return Ok(user);
+        }
+
         [HttpPost("register")]
         public ActionResult AddUser(CreateUserRequest createRequest)
         {

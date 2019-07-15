@@ -22,6 +22,19 @@ namespace BandAid.Data
             }
         }
 
+        public User GetSingle(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var user = db.QueryFirstOrDefault<User>(@"
+                    Select * from [User]
+                    Where id = @id",
+                    new { id });
+
+                return user;
+            }
+        }
+
         public User AddUser(string firstName, string lastName, string email, DateTime dateCreated, long phone,
             string address, string city, string state, string instrument, int yearsOfExp, string imageUrl)
         {

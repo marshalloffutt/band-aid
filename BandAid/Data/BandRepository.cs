@@ -88,7 +88,7 @@ namespace BandAid.Data
                         Set name = @name,
                             genre = @genre,
                             description = @description,
-                            logUrl = @logourl,
+                            logoUrl = @logourl,
                             dateCreated = @datecreated,
                             inactive = @inactive,
                             city = @city,

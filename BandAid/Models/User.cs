@@ -12,7 +12,7 @@ namespace BandAid.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public DateTime DateCreated { get; set; }
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }

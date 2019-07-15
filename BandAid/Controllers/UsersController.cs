@@ -54,5 +54,13 @@ namespace BandAid.Controllers
 
             return Created($"api/user/{newUser.Id}", newUser);
         }
+
+        [HttpPut("update/{id}")]
+        public ActionResult update(User user)
+        {
+            var updatedUser = _userRepository.Update(user);
+
+            return Ok(user);
+        }
     }
 }

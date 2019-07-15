@@ -22,7 +22,7 @@ namespace BandAid.Data
             }
         }
 
-        public User AddUser(string firstName, string lastName, string email, DateTime dateCreated, int phone,
+        public User AddUser(string firstName, string lastName, string email, DateTime dateCreated, long phone,
             string address, string city, string state, string instrument, int yearsOfExp, string imageUrl)
         {
             using (var db = new SqlConnection(ConnectionString))
@@ -68,6 +68,37 @@ namespace BandAid.Data
             }
 
             throw new Exception("Could not create user");
+        }
+
+        public User Update(User userToUpdate)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var updateQuery = @"
+                        Update [dbo].[User]
+                        Set firstName = @firstname,
+                            lastName = @lastname,
+                            email = @email,
+                            dateCreated = @datecreated,
+                            phone = @phone,
+                            address = @address,
+                            city = @city,
+                            state = @state,
+                            instrument = @instrument,
+                            yearsOfExp = @yearsofexp,
+                            imageUrl = @imageurl
+                        Where id = @id";
+
+                var rowsAffected = db.Execute(updateQuery, userToUpdate);
+
+                if (rowsAffected == 1)
+                {
+                    return userToUpdate;
+                }
+
+                else throw new Exception("Could not update user");
+            }
+
         }
     }
 }

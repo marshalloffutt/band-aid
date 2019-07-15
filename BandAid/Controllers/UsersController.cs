@@ -26,9 +26,9 @@ namespace BandAid.Controllers
         [HttpGet]
         public ActionResult GetAllUsers()
         {
-            var Users = _userRepository.GetAll();
+            var users = _userRepository.GetAll();
 
-            return Ok(Users);
+            return Ok(users);
         }
 
         [HttpGet("{id}")]

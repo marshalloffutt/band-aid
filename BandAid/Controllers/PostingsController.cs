@@ -43,7 +43,8 @@ namespace BandAid.Controllers
             var newPosting = _postingRepository.AddPosting(
                 createRequest.InstrumentRequested,
                 createRequest.Description,
-                createRequest.Closed);
+                createRequest.Closed,
+                createRequest.BandId);
 
             return Created($"api/posting/{newPosting.Id}", newPosting);
         }

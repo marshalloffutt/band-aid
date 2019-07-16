@@ -11,5 +11,6 @@ namespace BandAid.Models
         public string InstrumentRequested { get; set; }
         public string Description { get; set; }
         public bool Closed { get; set; }
+        public int BandId { get; set; }
     }
 }

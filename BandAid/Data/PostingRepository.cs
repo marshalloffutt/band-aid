@@ -38,7 +38,7 @@ namespace BandAid.Data
             }
         }
 
-        public Posting AddPosting(string instrumentRequested, string description, bool closed)
+        public Posting AddPosting(string instrumentRequested, string description, bool closed, int bandId)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -46,15 +46,17 @@ namespace BandAid.Data
                     Insert into [dbo].[Posting](
                         [InstrumentRequested],
                         [Description],
-                        [Closed])
+                        [Closed],
+                        [BandId])
                     Output inserted.*
-                    Values(@instrumentrequested, @description, @closed)";
+                    Values(@instrumentrequested, @description, @closed, @bandid)";
 
                 var parameters = new
                 {
                     InstrumentRequested = instrumentRequested,
                     Description = description,
-                    Closed = closed
+                    Closed = closed,
+                    BandId = bandId
                 };
 
                 var newPosting = db.QueryFirstOrDefault<Posting>(insertQuery, parameters);
@@ -75,7 +77,8 @@ namespace BandAid.Data
                         Update [dbo].[Posting]
                             Set instrumentRequested = @instrumentrequested,
                             description = @description,
-                            closed = @closed
+                            closed = @closed,
+                            bandId = @bandid
                         Where id = @id";
 
                 var rowsAffected = db.Execute(updateQuery, postingToUpdate);

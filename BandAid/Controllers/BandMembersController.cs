@@ -42,7 +42,8 @@ namespace BandAid.Controllers
         {
             var newBandMember = _bandMemberRepository.AddBandMember(
                 createRequest.MusicianId,
-                createRequest.BandId);
+                createRequest.BandId,
+                createRequest.DateJoined);
 
             return Created($"api/bandmember/{newBandMember.Id}", newBandMember);
         }

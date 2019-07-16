@@ -10,5 +10,6 @@ namespace BandAid.Models
         public int Id { get; set; }
         public int MusicianId { get; set; }
         public int BandId { get; set; }
+        public DateTime DateJoined { get; set; }
     }
 }

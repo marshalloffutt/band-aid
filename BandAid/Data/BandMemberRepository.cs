@@ -38,21 +38,23 @@ namespace BandAid.Data
             }
         }
 
-        public BandMember AddBandMember(int musicianId, int bandId)
+        public BandMember AddBandMember(int musicianId, int bandId, DateTime dateJoined)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var insertQuery = @"
                     Insert into [dbo].[BandMember](
                         [MusicianId],
-                        [BandId])
+                        [BandId],
+                        [DateJoined])
                     Output inserted.*
-                    Values(@musicianid, @bandid)";
+                    Values(@musicianid, @bandid, @datejoined)";
 
                 var parameters = new
                 {
                     MusicianId = musicianId,
-                    BandId = bandId
+                    BandId = bandId,
+                    DateJoined = dateJoined
                 };
 
                 var newBandMember = db.QueryFirstOrDefault<BandMember>(insertQuery, parameters);

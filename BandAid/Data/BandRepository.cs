@@ -43,6 +43,10 @@ namespace BandAid.Data
                     Where id = @id",
                     new { id });
 
+                var shindigs = db.Query<Shindig>("Select * From [Shindig] s Where s.HasComeToPass = 0");
+
+                band.Shindigs = shindigs.Where(shindig => shindig.BandId == band.Id).ToList();
+
                 return band;
             }
         }

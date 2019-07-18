@@ -20,5 +20,8 @@ namespace BandAid.Models
         public int YearsOfExp { get; set; }
         public string ImageUrl { get; set; }
         public bool Inactive { get; set; }
+
+        // Bands user is in
+        public List<Band> Bands { get; set; }
     }
 }

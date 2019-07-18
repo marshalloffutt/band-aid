@@ -35,7 +35,7 @@ namespace BandAid.Data
 
                 foreach (var user in users)
                 {
-                    // list of custom object bands matching the musician Id to usr Id
+                    // list of custom object bands matching the musician Id to user Id
                     var userBands = bands.Where(band => band.MusicianId == user.Id);
 
                     // data transformation using LINQ to get list of Bands on each user
@@ -65,6 +65,28 @@ namespace BandAid.Data
                     Select * from [User]
                     Where id = @id",
                     new { id });
+
+                // list of custom object bands that contain the band and band member table
+                var userBands = db.Query<BandWithMemberId>(@"
+                    Select * 
+                    From [Band] b 
+                    Join [BandMember] bm on bm.bandId = b.Id
+                    Where bm.MusicianId = @id",
+                    new { id });
+
+                // data transformation using LINQ to get list of Bands on single user
+                user.Bands = userBands.Select(userBand => new Band
+                {
+                    Id = userBand.Id,
+                    Name = userBand.Name,
+                    Genre = userBand.Genre,
+                    Description = userBand.Description,
+                    LogoUrl = userBand.LogoUrl,
+                    DateCreated = userBand.DateCreated,
+                    Inactive = userBand.Inactive,
+                    City = userBand.City,
+                    State = userBand.State
+                }).ToList();
 
                 return user;
             }
@@ -168,27 +190,6 @@ namespace BandAid.Data
                     return true;
                 } else throw new Exception("Could not deactivate account");
             }
-        }
-
-        public Object GetUserBands(int userId)
-        {
-            using (var db = new SqlConnection(_connectionString))
-            {
-                var user = db.Query<Object>(
-                    @"Select u.Id, u.FirstName, u.LastName, u.Email, 
-                        u.DateCreated, u.Phone, u.Address, u.City, u.State, 
-                        u.Instrument, u.YearsofExp, u.ImageUrl, bm.datejoined, 
-                        b.name, b.genre, b.description, b.logourl
-                      From user u
-                      Join bandmember bm on bm.MusicianId = u.Id
-                      Join band b on b.Id = bm.bandId
-                      Where u.Id = @userId",
-                    new { userId }
-                    );
-
-                return user;
-            }
-            throw new Exception("Could not find user");
         }
     }
 }

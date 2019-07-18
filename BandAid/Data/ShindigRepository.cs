@@ -45,7 +45,7 @@ namespace BandAid.Data
         }
 
         public Shindig AddShindig(string description, DateTime eventDate, string address, 
-            string city, string state, int zipcode, bool hasComeToPass)
+            string city, string state, int zipcode, bool hasComeToPass, int bandId)
         {
             using (var db = new SqlConnection(_connectionString))
             {
@@ -57,10 +57,11 @@ namespace BandAid.Data
                         [City],
                         [State],
                         [Zipcode],
-                        [HasComeToPass])
+                        [HasComeToPass],
+                        [BandId])
                     Output inserted.*
                     Values(@description, @eventdate, @address, @city,
-                    @state, @zipcode, @hascometopass)";
+                    @state, @zipcode, @hascometopass, @bandid)";
 
                 var parameters = new
                 {
@@ -70,7 +71,8 @@ namespace BandAid.Data
                     City = city,
                     State = state,
                     Zipcode = zipcode,
-                    HasComeToPass = hasComeToPass
+                    HasComeToPass = hasComeToPass,
+                    BandId = bandId
                 };
 
                 var newShindig = db.QueryFirstOrDefault<Shindig>(insertQuery, parameters);
@@ -95,7 +97,8 @@ namespace BandAid.Data
                             city = @city,
                             state = @state,
                             zipcode = @zipcode,
-                            hasComeToPass = @hascometopass
+                            hasComeToPass = @hascometopass,
+                            bandId = @bandid
                         Where id = @id";
 
                 var rowsAffected = db.Execute(updateQuery, shindigToUpdate);

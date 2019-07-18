@@ -22,12 +22,15 @@ namespace BandAid.Data
         {
             using (var db = new SqlConnection(_connectionString))
             {
-                var bands = db.Query<Band>(@"
-                    Select *
-                    From [Band]
-                    Where inactive = 0").ToList();
+                var bands = db.Query<Band>("Select * From [Band] Where inactive = 0");
 
-                return bands;
+                var shindigs = db.Query<Shindig>("Select * From [Shindig] s Where s.HasComeToPass = 0");
+
+                foreach(var band in bands)
+                {
+                    band.Shindigs = shindigs.Where(shindig => shindig.BandId == band.Id).ToList();
+                }
+                return bands.ToList();
             }
         }
 

@@ -16,5 +16,8 @@ namespace BandAid.Models
         public bool Inactive { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+
+        // Shindigs the band has scheduled
+        public List <Shindig> Shindigs { get; set; }
     }
 }

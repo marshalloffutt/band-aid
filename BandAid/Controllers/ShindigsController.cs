@@ -48,7 +48,8 @@ namespace BandAid.Controllers
                 createRequest.City,
                 createRequest.State,
                 createRequest.Zipcode,
-                createRequest.HasComeToPass);
+                createRequest.HasComeToPass,
+                createRequest.BandId);
 
             return Created($"api/shindig/{newShindig.Id}", newShindig);
         }

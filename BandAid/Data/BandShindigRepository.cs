@@ -5,16 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using BandAid.Models;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace BandAid.Data
 {
     public class BandShindigRepository
     {
-        const string ConnectionString = "Server=localhost;Database=BandAid;Trusted_Connection=True;";
+        readonly string _connectionString;
+
+        public BandShindigRepository(IOptions<DbConfiguration> dbConfig)
+        {
+            _connectionString = dbConfig.Value.ConnectionString;
+        }
 
         public IEnumerable<BandShindig> GetAll()
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var bandshindigs = db.Query<BandShindig>(@"
                     Select *
@@ -26,7 +32,7 @@ namespace BandAid.Data
 
         public BandShindig GetSingle(int id)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var bandshindig = db.QueryFirstOrDefault<BandShindig>(@"
                     Select *
@@ -40,7 +46,7 @@ namespace BandAid.Data
 
         public BandShindig AddBandShindig(int bandId, int shindigId)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var insertQuery = @"
                     Insert into [dbo].[BandShindig](
@@ -68,7 +74,7 @@ namespace BandAid.Data
 
         public BandShindig DeleteBandShindig(int bandShindigId)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var deletedBandShindig = db.QueryFirstOrDefault<BandShindig>(@"
                     Delete from [BandShindig]

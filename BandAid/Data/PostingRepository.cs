@@ -5,16 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using BandAid.Models;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace BandAid.Data
 {
     public class PostingRepository
     {
-        const string ConnectionString = "Server=localhost;Database=BandAid;Trusted_Connection=True;";
+        readonly string _connectionString;
+
+        public PostingRepository(IOptions<DbConfiguration> dbConfig)
+        {
+            _connectionString = dbConfig.Value.ConnectionString;
+        }
 
         public IEnumerable<Posting> GetAll()
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var postings = db.Query<Posting>(@"
                     Select *
@@ -27,7 +33,7 @@ namespace BandAid.Data
 
         public Posting GetSingle(int id)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var posting = db.QueryFirstOrDefault<Posting>(@"
                     Select * from [Posting]
@@ -40,7 +46,7 @@ namespace BandAid.Data
 
         public Posting AddPosting(string instrumentRequested, string description, bool closed, int bandId)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var insertQuery = @"
                     Insert into [dbo].[Posting](
@@ -71,7 +77,7 @@ namespace BandAid.Data
 
         public Posting Update(Posting postingToUpdate)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var updateQuery = @"
                         Update [dbo].[Posting]
@@ -94,7 +100,7 @@ namespace BandAid.Data
 
         public Posting DeletePosting(int postingId)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var deletedPosting = db.QueryFirstOrDefault<Posting>(@"
                     Delete from [Posting]

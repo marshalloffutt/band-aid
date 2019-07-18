@@ -5,16 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using BandAid.Models;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace BandAid.Data
 {
     public class PostingReplyRepository
     {
-        const string ConnectionString = "Server=localhost;Database=BandAid;Trusted_Connection=True;";
+        readonly string _connectionString;
+
+        public PostingReplyRepository(IOptions<DbConfiguration> dbConfig)
+        {
+            _connectionString = dbConfig.Value.ConnectionString;
+        }
 
         public IEnumerable<PostingReply> GetAll()
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var postingReplies = db.Query<PostingReply>(@"
                     Select *
@@ -27,7 +33,7 @@ namespace BandAid.Data
 
         public PostingReply GetSingle(int id)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var postingreply = db.QueryFirstOrDefault<PostingReply>(@"
                     Select *
@@ -41,7 +47,7 @@ namespace BandAid.Data
 
         public PostingReply AddPostingReply(DateTime dateCreated, int postingId, int musicianId, string message, bool closed)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var insertQuery = @"
                     Insert into [dbo].[PostingReply](
@@ -75,7 +81,7 @@ namespace BandAid.Data
 
         public PostingReply Update(PostingReply postingReplyToUpdate)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var updateQuery = @"
                         Update [dbo].[PostingReply]
@@ -99,7 +105,7 @@ namespace BandAid.Data
 
         public bool CloseReply(PostingReply postingReplyToClose)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var updateQuery = @"
                     Update [PostingReply]

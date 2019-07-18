@@ -7,6 +7,7 @@ using BandAid.Models;
 using BandAid.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BandAid.Controllers
 {
@@ -16,9 +17,9 @@ namespace BandAid.Controllers
     {
         readonly ShindigRepository _shindigRepository;
 
-        public ShindigsController()
+        public ShindigsController(ShindigRepository shindigRepository)
         {
-            _shindigRepository = new ShindigRepository();
+            _shindigRepository = shindigRepository;
         }
 
         [HttpGet]

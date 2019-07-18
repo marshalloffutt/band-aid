@@ -5,16 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using BandAid.Models;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace BandAid.Data
 {
     public class UserRepository
     {
-        const string ConnectionString = "Server=localhost;Database=BandAid;Trusted_Connection=True;";
+        readonly string _connectionString;
+
+        public UserRepository(IOptions<DbConfiguration> dbConfig)
+        {
+            _connectionString = dbConfig.Value.ConnectionString;
+        }
 
         public IEnumerable<User> GetAll()
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var users = db.Query<User>(@"
                 Select *
@@ -27,7 +33,7 @@ namespace BandAid.Data
 
         public User GetSingle(int id)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var user = db.QueryFirstOrDefault<User>(@"
                     Select * from [User]
@@ -41,7 +47,7 @@ namespace BandAid.Data
         public User AddUser(string firstName, string lastName, string email, DateTime dateCreated, long phone,
             string address, string city, string state, string instrument, int yearsOfExp, string imageUrl, bool inactive)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var insertQuery = @"
                     Insert into [dbo].[User](
@@ -90,7 +96,7 @@ namespace BandAid.Data
 
         public User Update(User userToUpdate)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var updateQuery = @"
                         Update [dbo].[User]
@@ -122,7 +128,7 @@ namespace BandAid.Data
 
         public bool Deactivate(User userToDeactivate)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var updateQuery = @"
                     Update [User]

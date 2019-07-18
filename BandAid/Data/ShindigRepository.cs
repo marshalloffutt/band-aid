@@ -5,16 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using BandAid.Models;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace BandAid.Data
 {
     public class ShindigRepository
     {
-        const string ConnectionString = "Server=localhost;Database=BandAid;Trusted_Connection=True;";
+        readonly string _connectionString;
+
+        public ShindigRepository(IOptions<DbConfiguration> dbConfig)
+        {
+            _connectionString = dbConfig.Value.ConnectionString;
+        }
 
         public IEnumerable<Shindig> GetAll()
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var events = db.Query<Shindig>(@"
                     Select *
@@ -27,7 +33,7 @@ namespace BandAid.Data
 
         public Shindig GetSingle(int id)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var shindig = db.QueryFirstOrDefault<Shindig>(@"
                     Select * from [Shindig]
@@ -41,7 +47,7 @@ namespace BandAid.Data
         public Shindig AddShindig(string description, DateTime eventDate, string address, 
             string city, string state, int zipcode, bool hasComeToPass)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var insertQuery = @"
                     Insert into [dbo].[Shindig](
@@ -79,7 +85,7 @@ namespace BandAid.Data
 
         public Shindig Update(Shindig shindigToUpdate)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var updateQuery = @"
                         Update [dbo].[Shindig]
@@ -105,7 +111,7 @@ namespace BandAid.Data
 
         public Shindig DeleteShindig(int shindigId)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var deletedShindig = db.QueryFirstOrDefault<Shindig>(@"
                     Delete from [Shindig]

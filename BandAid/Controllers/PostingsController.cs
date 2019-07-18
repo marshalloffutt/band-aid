@@ -7,6 +7,7 @@ using BandAid.Models;
 using BandAid.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BandAid.Controllers
 {
@@ -16,9 +17,9 @@ namespace BandAid.Controllers
     {
         readonly PostingRepository _postingRepository;
 
-        public PostingsController()
+        public PostingsController(PostingRepository postingRepository)
         {
-            _postingRepository = new PostingRepository();
+            _postingRepository = postingRepository;
         }
 
         [HttpGet]

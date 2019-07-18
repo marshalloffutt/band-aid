@@ -5,16 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using BandAid.Models;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace BandAid.Data
 {
     public class BandMemberRepository
     {
-        const string ConnectionString = "Server=localhost;Database=BandAid;Trusted_Connection=True;";
+        readonly string _connectionString;
+
+        public BandMemberRepository(IOptions<DbConfiguration> dbConfig)
+        {
+            _connectionString = dbConfig.Value.ConnectionString;
+        }
 
         public IEnumerable<BandMember> GetAll()
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var bandmembers = db.Query<BandMember>(@"
                     Select *
@@ -26,7 +32,7 @@ namespace BandAid.Data
 
         public BandMember GetSingle(int id)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var bandmember = db.QueryFirstOrDefault<BandMember>(@"
                     Select *
@@ -40,7 +46,7 @@ namespace BandAid.Data
 
         public BandMember AddBandMember(int musicianId, int bandId, DateTime dateJoined)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var insertQuery = @"
                     Insert into [dbo].[BandMember](
@@ -70,7 +76,7 @@ namespace BandAid.Data
 
         public BandMember DeleteBandMember(int bandMemberId)
         {
-            using (var db = new SqlConnection(ConnectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 var deletedBandMember = db.QueryFirstOrDefault<BandMember>(@"
                     Delete from [BandMember]

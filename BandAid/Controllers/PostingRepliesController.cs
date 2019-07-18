@@ -16,9 +16,9 @@ namespace BandAid.Controllers
     {
         readonly PostingReplyRepository _postingReplyRepository;
 
-        public PostingRepliesController()
+        public PostingRepliesController(PostingReplyRepository postingReplyRepository)
         {
-            _postingReplyRepository = new PostingReplyRepository();
+            _postingReplyRepository = postingReplyRepository;
         }
 
         [HttpGet]

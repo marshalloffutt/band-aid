@@ -16,9 +16,9 @@ namespace BandAid.Controllers
     {
         readonly BandShindigRepository _bandShindigRepository;
 
-        public BandShindigsController()
+        public BandShindigsController(BandShindigRepository bandShindigRepository)
         {
-            _bandShindigRepository = new BandShindigRepository();
+            _bandShindigRepository = bandShindigRepository;
         }
 
         [HttpGet]

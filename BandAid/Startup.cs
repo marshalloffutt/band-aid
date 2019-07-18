@@ -43,7 +43,6 @@ namespace BandAid
             services.Configure<DbConfiguration>(Configuration);
             services.AddTransient<BandMemberRepository>();
             services.AddTransient<BandRepository>();
-            services.AddTransient<BandShindigRepository>();
             services.AddTransient<PostingReplyRepository>();
             services.AddTransient<PostingRepository>();
             services.AddTransient<ShindigRepository>();

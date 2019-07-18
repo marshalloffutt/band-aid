@@ -287,10 +287,10 @@ INSERT INTO [dbo].[Posting] ([InstrumentRequested], [Description], [Closed], [Ba
 INSERT INTO [dbo].[Posting] ([InstrumentRequested], [Description], [Closed], [BandId]) VALUES ('Vocals', 'Need someone who can sang!', 0, 5)
 
 -- Shindig Seed Data
-INSERT INTO [dbo].[Shindig] ([Description], [EventDate], [Address], [City], [State], [Zipcode], [HasComeToPass])
+INSERT INTO [dbo].[Shindig] ([Description], [EventDate], [Address], [City], [State], [Zipcode], [HasComeToPass], [BandId])
 VALUES ('Rehearsal', '2019-07-16', '6653 Germantown Blvd','Nashville', 'Tennessee', 37433, 0, 4)
 
-INSERT INTO [dbo].[Shindig] ([Description], [EventDate], [Address], [City], [State], [Zipcode], [HasComeToPass])
+INSERT INTO [dbo].[Shindig] ([Description], [EventDate], [Address], [City], [State], [Zipcode], [HasComeToPass], [BandId])
 VALUES ('Practice', '2019-07-16', '1123 Blakemore Dr', 'Houston', 'Texas', 34778, 0, 2)
 
 -- Band-Member Seed Data

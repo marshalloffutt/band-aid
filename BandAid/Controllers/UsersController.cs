@@ -7,6 +7,7 @@ using BandAid.Models;
 using BandAid.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BandAid.Controllers
 {
@@ -17,9 +18,9 @@ namespace BandAid.Controllers
         readonly UserRepository _userRepository;
         readonly CreateUserRequestValidator _validator;
 
-        public UsersController()
+        public UsersController(UserRepository userRepository)
         {
-            _userRepository = new UserRepository();
+            _userRepository = userRepository;
             _validator = new CreateUserRequestValidator();
         }
 

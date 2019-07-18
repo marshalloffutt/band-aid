@@ -7,6 +7,7 @@ using BandAid.Models;
 using BandAid.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BandAid.Controllers
 {
@@ -16,9 +17,9 @@ namespace BandAid.Controllers
     {
         readonly BandMemberRepository _bandMemberRepository;
 
-        public BandMembersController()
+        public BandMembersController(BandMemberRepository bandMemberRepository)
         {
-            _bandMemberRepository = new BandMemberRepository();
+            _bandMemberRepository = bandMemberRepository;
         }
 
         [HttpGet]

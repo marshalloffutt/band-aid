@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BandAid.Models
 {
-    public class Band
+    public class BandWithMemberId
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,14 +16,7 @@ namespace BandAid.Models
         public bool Inactive { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-
-        // Shindigs the band has scheduled
-        public List <Shindig> Shindigs { get; set; }
-
-        // Band members
-        public List <User> Musicians { get; set; }
-
-        // Postings for the band
-        public List <Posting> Postings { get; set; }
+        public int MusicianId { get; set; }
+        public DateTime DateJoined { get; set; }
     }
 }

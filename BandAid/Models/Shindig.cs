@@ -15,5 +15,6 @@ namespace BandAid.Models
         public string State { get; set; }
         public int Zipcode { get; set; }
         public bool HasComeToPass { get; set; }
+        public int BandId { get; set; }
     }
 }

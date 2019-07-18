@@ -22,12 +22,38 @@ namespace BandAid.Data
         {
             using (var db = new SqlConnection(_connectionString))
             {
-                var bands = db.Query<Band>(@"
-                    Select *
-                    From [Band]
-                    Where inactive = 0").ToList();
+                var bands = db.Query<Band>("Select * From [Band] Where inactive = 0");
 
-                return bands;
+                var shindigs = db.Query<Shindig>("Select * From [Shindig] s Where s.HasComeToPass = 0");
+
+                var postings = db.Query<Posting>("Select * From [Posting]");
+
+                var musicians = db.Query<User>("Select * From [User] u Where u.Inactive = 0");
+
+                var bandMembers = db.Query<BandMember>("Select * From [BandMember]");
+
+                foreach(var band in bands)
+                {
+                    var matchingBandMembers = bandMembers.Where(bandMember => bandMember.BandId == band.Id);
+
+                    List<User> theMusicians = new List<User>();
+
+                    foreach (var member in matchingBandMembers)
+                    {
+                        var matchingMembers = musicians.Where(musician => musician.Id == member.MusicianId).FirstOrDefault();
+
+                        if (matchingMembers != null)
+                        {
+                            theMusicians.Add(matchingMembers);
+                        }
+                    }
+                    
+                    band.Shindigs = shindigs.Where(shindig => shindig.BandId == band.Id).ToList();
+                    band.Musicians = theMusicians;
+                    band.Postings = postings.Where(posting => posting.BandId == band.Id).ToList();
+                }
+            
+                return bands.ToList();
             }
         }
 
@@ -39,6 +65,32 @@ namespace BandAid.Data
                     Select * from [Band]
                     Where id = @id",
                     new { id });
+
+                var shindigs = db.Query<Shindig>("Select * From [Shindig] s Where s.HasComeToPass = 0");
+
+                var musicians = db.Query<User>("Select * From [User] u Where u.Inactive = 0");
+
+                var bandMembers = db.Query<BandMember>("Select * From [BandMember]");
+
+                var postings = db.Query<Posting>("Select * From [Posting]");
+
+                var matchingBandMembers = bandMembers.Where(bandMember => bandMember.BandId == band.Id);
+
+                List<User> theMusicians = new List<User>();
+
+                foreach (var member in matchingBandMembers)
+                {
+                    var matchingMembers = musicians.Where(musician => musician.Id == member.MusicianId).FirstOrDefault();
+
+                    if (matchingMembers != null)
+                    {
+                        theMusicians.Add(matchingMembers);
+                    }
+                }
+
+                band.Shindigs = shindigs.Where(shindig => shindig.BandId == band.Id).ToList();
+                band.Musicians = theMusicians;
+                band.Postings = postings.Where(posting => posting.BandId == band.Id).ToList();
 
                 return band;
             }

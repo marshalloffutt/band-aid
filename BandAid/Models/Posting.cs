@@ -12,5 +12,7 @@ namespace BandAid.Models
         public string Description { get; set; }
         public bool Closed { get; set; }
         public int BandId { get; set; }
+
+        public List<PostingReply> Replies { get; set; }
     }
 }

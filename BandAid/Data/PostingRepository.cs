@@ -25,9 +25,16 @@ namespace BandAid.Data
                 var postings = db.Query<Posting>(@"
                     Select *
                     From [Posting]
-                    Where closed = 0").ToList();
+                    Where closed = 0");
 
-                return postings;
+                var replies = db.Query<PostingReply>("Select * From [PostingReply]");
+
+                foreach (var posting in postings)
+                {
+                    posting.Replies = replies.Where(reply => reply.PostingId == posting.Id).ToList();
+                }
+
+                return postings.ToList();
             }
         }
 
@@ -39,6 +46,10 @@ namespace BandAid.Data
                     Select * from [Posting]
                     Where id = @id",
                     new { id });
+
+                var replies = db.Query<PostingReply>("Select * From [PostingReply]");
+
+                posting.Replies = replies.Where(reply => reply.PostingId == posting.Id).ToList();
 
                 return posting;
             }

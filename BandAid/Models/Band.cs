@@ -22,5 +22,8 @@ namespace BandAid.Models
 
         // Band members
         public List <User> Musicians { get; set; }
+
+        // Postings for the band
+        public List <Posting> Postings { get; set; }
     }
 }

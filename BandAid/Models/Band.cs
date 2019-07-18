@@ -19,5 +19,8 @@ namespace BandAid.Models
 
         // Shindigs the band has scheduled
         public List <Shindig> Shindigs { get; set; }
+
+        // Band members
+        public List <User> Musicians { get; set; }
     }
 }

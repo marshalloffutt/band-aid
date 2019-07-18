@@ -27,7 +27,7 @@ namespace BandAid.Data
                     From [User] 
                     Where inactive = 0");
 
-                // list of custom object bands that contain the band and band member table
+                // list of custom object bands that contain the band and bandmember table
                 var bands = db.Query<BandWithMemberId>(@"
                     Select * 
                     From [Band] b 

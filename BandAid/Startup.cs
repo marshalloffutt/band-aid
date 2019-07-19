@@ -33,9 +33,9 @@ namespace BandAid
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = "https://securetoken.google.com/band-aid",
+                        ValidIssuer = "https://securetoken.google.com/band-aid-fd898",
                         ValidateAudience = true,
-                        ValidAudience = "band-aid",
+                        ValidAudience = "band-aid-fd898",
                         ValidateLifetime = true
                     };
                 });
@@ -47,6 +47,7 @@ namespace BandAid
             services.AddTransient<PostingRepository>();
             services.AddTransient<ShindigRepository>();
             services.AddTransient<UserRepository>();
+            services.AddSingleton<IConfiguration>(Configuration);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -71,6 +72,11 @@ namespace BandAid
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials();
+            });
 
             app.UseMvc(routes =>
             {

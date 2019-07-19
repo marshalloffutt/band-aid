@@ -106,7 +106,7 @@ class Register extends React.Component {
   render() {
     const { user } = this.state;
     const buildModal = () => (
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <Modal id='border-radius-1' isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <ModalHeader toggle={this.toggle}>Register a new Account!</ModalHeader>
         <ModalBody>
         <div className="Register">
@@ -259,7 +259,7 @@ class Register extends React.Component {
             <FormGroup className="form-group">
                 <Button
                   type="submit"
-                  className="btn btn-default col-xs-12 red-button"
+                  className="btn btn-default col-xs-12 teal-button"
                   onClick={this.registerClickEvent}
                 >
                   Register

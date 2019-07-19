@@ -55,16 +55,16 @@ class Auth extends React.Component {
                 <div>
                   <img className='bandImg' src={ photo } alt='logo'/>
                 </div>
-                <div id="login-form">
+                <div id="login-form mt-5">
                 <Row>
-                    <Col><h2 className="text-center loginHeader">Login to Band★Aid</h2></Col>
+                    <Col><h2 className="text-center">Login to Band★Aid</h2></Col>
                 </Row>
                 <Form>
                     <FormGroup className="form-group">
                       <div className="input-field">
                         <Input
                         type="email"
-                        className="form-control"
+                        className="form-control input-password-email-field"
                         id="inputEmail"
                         placeholder="Email"
                         value={user.email}
@@ -76,7 +76,7 @@ class Auth extends React.Component {
                     <div className="input-field">
                         <Input
                         type="password"
-                        className="form-control"
+                        className="form-control input-password-email-field"
                         id="inputPassword"
                         placeholder="Password"
                         value={user.password}

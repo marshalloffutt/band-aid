@@ -3,9 +3,14 @@
 .App {
   text-align: center;
   font-family: 'Roboto';
-  background-color: $white;
+
 };
 
 body {
   align-items: center;
+  background-color: $white;
+}
+
+html {
+  min-height: 100%;
 }

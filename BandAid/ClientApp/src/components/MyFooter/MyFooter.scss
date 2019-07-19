@@ -1,0 +1,20 @@
+@import '../../styles/variables.scss';
+
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 150px;
+    background-color: $white-darker;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footerText {
+    font-size: 20px;
+    color: $blue-lighter;
+}

@@ -57,7 +57,7 @@ class Auth extends React.Component {
                 </div>
                 <div id="login-form mt-5">
                 <Row>
-                    <Col><h2 className="text-center">Login to Band★Aid</h2></Col>
+                    <Col><h2 className="text-center m-5">Find your next band. Be a star!</h2></Col>
                 </Row>
                 <Form>
                     <FormGroup className="form-group">

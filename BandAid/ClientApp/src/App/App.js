@@ -13,6 +13,7 @@ import connection from '../helpers/data/connection';
 import Auth from '../components/pages/Auth/Auth';
 import Home from '../components/pages/Home/Home';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
+import MyFooter from '../components/MyFooter/MyFooter';
 
 import './App.scss';
 
@@ -74,6 +75,7 @@ class App extends React.Component {
                 <PublicRoute path='/auth' exact component={Auth} authed={this.state.authed} />
               </Switch>
           </React.Fragment>
+          <MyFooter />
         </BrowserRouter>
       </div>
     );

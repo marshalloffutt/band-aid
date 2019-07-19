@@ -2,6 +2,8 @@
 import React from 'react';
 import {
   Button,
+  Row,
+  Col,
   Form,
   FormGroup,
   Label,
@@ -97,6 +99,8 @@ class Register extends React.Component {
 
   stateChange = e => this.formFieldStringState('state', e);
 
+  zipcodeChange = e => this.formFieldNumberState('zipcode', e);
+
   instrumentChange = e => this.formFieldStringState('instrument', e);
 
   yearsOfExpChange = e => this.formFieldNumberState('yearsOfExp', e);
@@ -106,169 +110,197 @@ class Register extends React.Component {
   render() {
     const { user } = this.state;
     const buildModal = () => (
-        <Modal id='border-radius-1' isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-        <ModalHeader toggle={this.toggle}>Register a new Account!</ModalHeader>
-        <ModalBody>
-        <div className="Register">
-        <Form id="login-form">
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputFirstname" className="col-sm-5 control-label">
-              </Label>
-                <Input
-                  type="firstname"
-                  className="form-control"
-                  id="inputFirstname"
-                  placeholder="Firstname"
-                  value={user.firstname}
-                  onChange={this.firstnameChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputLastname" className="col-sm-5 control-label">
-              </Label>
-                <Input
-                  type="lastname"
-                  className="form-control"
-                  id="inputLastname"
-                  placeholder="Lastname"
-                  value={user.lastname}
-                  onChange={this.lastnameChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputEmail" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="email"
-                  className="form-control"
-                  id="inputEmail"
-                  placeholder="Email"
-                  value={user.email}
-                  onChange={this.emailChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputPassword" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="password"
-                  className="form-control"
-                  id="inputPassword"
-                  placeholder="Password"
-                  value={user.password}
-                  onChange={this.passwordChange}
-                />
-            </FormGroup>
-
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputImageUrl" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="imageUrl"
-                  className="form-control"
-                  id="inputImageUrl"
-                  placeholder="Photo url"
-                  value={user.imageUrl}
-                  onChange={this.imageUrlChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputPhone" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="phone"
-                  className="form-control"
-                  id="inputPhone"
-                  placeholder="Phone"
-                  value={user.phone}
-                  onChange={this.phoneChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputAddress" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="address"
-                  className="form-control"
-                  id="inputAddress"
-                  placeholder="Address"
-                  value={user.address}
-                  onChange={this.addressChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputCity" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="city"
-                  className="form-control"
-                  id="inputCity"
-                  placeholder="City"
-                  value={user.city}
-                  onChange={this.cityChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputState" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="state"
-                  className="form-control"
-                  id="inputState"
-                  placeholder="State"
-                  value={user.state}
-                  onChange={this.stateChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputInstrument" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="instrument"
-                  className="form-control"
-                  id="inputInstrument"
-                  placeholder="Instrument"
-                  value={user.instrument}
-                  onChange={this.instrumentChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputYearsOfExp" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="yearsOfExp"
-                  className="form-control"
-                  id="inputYearsOfExp"
-                  placeholder="Years of Experience"
-                  value={user.yearsOfExp}
-                  onChange={this.yearsOfExpChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-                <Button
-                  type="submit"
-                  className="btn btn-default col-xs-12 teal-button"
-                  onClick={this.registerClickEvent}
-                >
-                  Register
-                </Button>
-            </FormGroup>
-
-        </Form>
-      </div>
-        </ModalBody>
+        <Modal size="lg" isOpen={this.state.modal} toggle={this.toggle} className='{this.props.className}'>
+          <ModalHeader toggle={this.toggle}>Register a new Account!</ModalHeader>
+          <ModalBody>
+            <div className="Register">
+              <Form id="login-form">
+                <Row form>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputFirstname" className="control-label">First Name:</Label>
+                        <Input
+                          type="text"
+                          className="form-control"
+                          id="inputFirstname"
+                          placeholder=""
+                          value={user.firstname}
+                          onChange={this.firstnameChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputLastname" className="control-label">Last Name:</Label>
+                        <Input
+                          type="text"
+                          className="form-control"
+                          id="inputLastname"
+                          placeholder=""
+                          value={user.lastname}
+                          onChange={this.lastnameChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <Row form>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputEmail" className="control-label">Email:</Label>
+                        <Input
+                          type="email"
+                          className="form-control"
+                          id="inputEmail"
+                          placeholder=""
+                          value={user.email}
+                          onChange={this.emailChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputPassword" className="control-label">Password:</Label>
+                        <Input
+                          type="password"
+                          className="form-control"
+                          id="inputPassword"
+                          placeholder=""
+                          value={user.password}
+                          onChange={this.passwordChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <Row form>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputImageUrl" className="control-label">Photo URL:</Label>
+                        <Input
+                          type="text"
+                          className="form-control"
+                          id="inputImageUrl"
+                          placeholder=""
+                          value={user.imageUrl}
+                          onChange={this.imageUrlChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputPhone" className="control-label">Phone:</Label>
+                        <Input
+                          type="number"
+                          className="form-control"
+                          id="inputPhone"
+                          placeholder=""
+                          value={user.phone}
+                          onChange={this.phoneChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={12}>
+                  <FormGroup className="form-group">
+                    <Label htmlFor="inputAddress" className="control-label">Address:</Label>
+                      <Input
+                        type="text"
+                        className="form-control"
+                        id="inputAddress"
+                        placeholder=""
+                        value={user.address}
+                        onChange={this.addressChange}
+                      />
+                  </FormGroup>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={4}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputCity" className="control-label">City:</Label>
+                        <Input
+                          type="text"
+                          className="form-control"
+                          id="inputCity"
+                          placeholder=""
+                          value={user.city}
+                          onChange={this.cityChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                  <Col md={4}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputState" className="control-label">State:</Label>
+                        <Input
+                          type="text"
+                          className="form-control"
+                          id="inputState"
+                          placeholder=""
+                          value={user.state}
+                          onChange={this.stateChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                  <Col md={4}>
+                    <FormGroup className="form-group">
+                        <Label htmlFor="inputState" className="control-label">Zipcode:</Label>
+                          <Input
+                            type="number"
+                            className="form-control"
+                            id="inputZipcode"
+                            placeholder=""
+                            value={user.zipcode}
+                            onChange={this.zipcodeChange}
+                          />
+                      </FormGroup>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                        <Label htmlFor="inputInstrument" className="control-label">Instrument:</Label>
+                          <Input
+                            type="text"
+                            className="form-control"
+                            id="inputInstrument"
+                            placeholder=""
+                            value={user.instrument}
+                            onChange={this.instrumentChange}
+                          />
+                      </FormGroup>
+                  </Col>
+                  <Col md={6}>
+                    <FormGroup className="form-group">
+                      <Label htmlFor="inputYearsOfExp" className="control-label">Years of Experience:</Label>
+                        <Input
+                          type="number"
+                          className="form-control"
+                          id="inputYearsOfExp"
+                          placeholder=""
+                          value={user.yearsOfExp}
+                          onChange={this.yearsOfExpChange}
+                        />
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={5}></Col>
+                  <Col md={2}>
+                    <FormGroup className="form-group">
+                        <Button
+                          type="submit"
+                          className="btn btn-default red-button"
+                          onClick={this.registerClickEvent}
+                        >
+                          Register
+                        </Button>
+                    </FormGroup>
+                  </Col>
+                  <Col md={5}></Col>
+                </Row>
+              </Form>
+            </div>
+          </ModalBody>
         </Modal>
     );
     return (

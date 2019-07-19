@@ -50,6 +50,8 @@ class Register extends React.Component {
 
   registerClickEvent = (e) => {
     const { user } = this.state;
+    const currentDate = new Date();
+    user.DateCreated = currentDate;
     e.preventDefault();
     authRequests
       .registerUser(user)
@@ -249,19 +251,6 @@ class Register extends React.Component {
                   placeholder="Years of Experience"
                   value={user.yearsOfExp}
                   onChange={this.yearsOfExpChange}
-                />
-            </FormGroup>
-
-            <FormGroup className="form-group">
-              <Label htmlFor="inputPhone" className="col-sm-4 control-label">
-              </Label>
-                <Input
-                  type="phone"
-                  className="form-control"
-                  id="inputPhone"
-                  placeholder="Phone"
-                  value={user.phone}
-                  onChange={this.phoneChange}
                 />
             </FormGroup>
 

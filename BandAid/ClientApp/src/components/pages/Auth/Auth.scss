@@ -1,0 +1,42 @@
+@import '../../../styles/variables';
+
+.Login {
+  background-color: $white;
+}
+
+.bandImg {
+  max-height: 320px;
+  margin-top: 30px;
+}
+
+.input-field {
+  display: flex;
+  justify-content: center;
+}
+
+#inputPassword {
+  width: 300px;
+}
+
+#inputEmail {
+  width: 300px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: center;;
+  flex-direction: row;
+}
+
+.blue-button {
+  background-color: $blue-darker;
+  &:hover {
+    background-color: $blue-lighter;
+  }
+}

@@ -1,0 +1,8 @@
+@import '../../styles/variables';
+
+.red-button {
+  background-color: $red-darker;
+  &:hover {
+    background-color: $red-lighter;
+  }
+}

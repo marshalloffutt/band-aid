@@ -3,7 +3,6 @@ import {
   Button,
   Form,
   FormGroup,
-  Label,
   Input,
   Row,
   Col,
@@ -12,7 +11,9 @@ import {
 import authRequests from '../../../helpers/data/authRequests';
 import Register from '../../Register/Register';
 
+import photo from '../../../images/band-image.png';
 import './Auth.scss';
+
 
 class Auth extends React.Component {
     state = {
@@ -51,15 +52,16 @@ class Auth extends React.Component {
       const { user } = this.state;
       return (
             <Container className="Login">
-                <Row>
-                    <Col><h1 className="text-center">Login to Band★Aid</h1></Col>
-                </Row>
+                <div>
+                  <img className='bandImg' src={ photo } alt='logo'/>
+                </div>
                 <div id="login-form">
+                <Row>
+                    <Col><h2 className="text-center loginHeader">Login to Band★Aid</h2></Col>
+                </Row>
                 <Form>
                     <FormGroup className="form-group">
-                    <Label htmlFor="inputEmail" className="col-sm-4 control-label">
-                        Email:
-                    </Label>
+                      <div className="input-field">
                         <Input
                         type="email"
                         className="form-control"
@@ -68,11 +70,10 @@ class Auth extends React.Component {
                         value={user.email}
                         onChange={this.emailChange}
                         />
+                      </div>
                     </FormGroup>
                     <FormGroup className="form-group">
-                    <Label htmlFor="inputPassword" className="col-sm-4 control-label">
-                        Password:
-                    </Label>
+                    <div className="input-field">
                         <Input
                         type="password"
                         className="form-control"
@@ -81,21 +82,24 @@ class Auth extends React.Component {
                         value={user.password}
                         onChange={this.passwordChange}
                         />
+                   </div>
                     </FormGroup>
-                    <FormGroup className="form-group">
-                    <div className="col-sm-12">
+                    <FormGroup className="formButtons">
+                    <div className="">
                         <Button
                         type="submit"
-                        className="btn btn-default col-xs-12"
+                        className="btn col-xs-12 mr-2 blue-button"
                         onClick={this.loginClickEvent}
                         >
                         Login
                         </Button>
                     </div>
+                    <div className="">
+                      <Register />
+                    </div>
                     </FormGroup>
                 </Form>
                 </div>
-                <Register />
             </Container>
       );
     }

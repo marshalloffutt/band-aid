@@ -6,7 +6,8 @@ project at Nashville Software School.
 * C#
 * ASP.Net
 * React
-* Bulma
+* Reactstrap
+* Bootstrap
 * Sass
 * MVC
 * Dapper

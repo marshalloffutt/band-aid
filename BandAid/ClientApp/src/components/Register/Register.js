@@ -14,6 +14,8 @@ import {
 import authRequests from '../../helpers/data/authRequests';
 import userRequests from '../../helpers/data/userRequests';
 
+import './Register.scss';
+
 const tempUser = {
   firstname: '',
   lastname: '',
@@ -104,7 +106,7 @@ class Register extends React.Component {
   render() {
     const { user } = this.state;
     const buildModal = () => (
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <Modal id='border-radius-1' isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <ModalHeader toggle={this.toggle}>Register a new Account!</ModalHeader>
         <ModalBody>
         <div className="Register">
@@ -257,7 +259,7 @@ class Register extends React.Component {
             <FormGroup className="form-group">
                 <Button
                   type="submit"
-                  className="btn btn-default col-xs-12"
+                  className="btn btn-default col-xs-12 teal-button"
                   onClick={this.registerClickEvent}
                 >
                   Register
@@ -272,7 +274,7 @@ class Register extends React.Component {
     return (
         <div className="register">
         <div className='account'>
-          <p><strong>Don't have an account?</strong> <Button className='btn btn-dark' onClick={this.toggle}>Register</Button></p>
+          <Button className='btn red-button' onClick={this.toggle}>Register</Button>
         </div>
       <div>{buildModal()}</div>
       </div>

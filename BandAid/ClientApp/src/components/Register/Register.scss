@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.login-form {
+  border-radius: 1px;
+}
+
+.form-group {
+  border-radius: 1px;
+}
+
+  .form-control {
+    border-radius: 1px;
+  }
+
+.red-button {
+  background-color: $red-darker;
+  border-radius: 1px;
+  &:hover {
+    background-color: $red-lighter;
+  }
+}
+
+.teal-button {
+  background-color: $teal-darker;
+  border-radius: 1px;
+  &:hover {
+    background-color: $teal-lighter;
+  }
+}

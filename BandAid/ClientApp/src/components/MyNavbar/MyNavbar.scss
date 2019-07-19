@@ -1,5 +1,9 @@
 @import '../../styles/variables';
 
-#mav {
-  background-color: $acousticBlue;
+.navbar {
+  background-color: $blue;
+}
+
+.navbar-brand {
+  color: $white;
 }

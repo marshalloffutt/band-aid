@@ -7,14 +7,20 @@ import {
   Container,
 } from 'reactstrap';
 
+import UserBandListItem from './UserBandListItem/UserBandListItem';
+import UserShindigListItem from './UserShindigListItem/UserShindigListItem';
+
 import userRequests from '../../../helpers/data/userRequests';
+import shindigRequests from '../../../helpers/data/shindigRequests';
 
 import './Home.scss';
 
 class Home extends React.Component {
   state = {
     userId: 0,
-    currentUser: {},
+    user: {},
+    userBands: [],
+    userShindigs: [],
   }
 
   componentDidMount() {
@@ -24,6 +30,12 @@ class Home extends React.Component {
         userRequests.getUserById(userId)
           .then((user) => {
             this.setState({ user });
+            const userBands = this.state.user.bands;
+            this.setState({ userBands });
+            shindigRequests.getShindigsUserById(userId)
+              .then((userShindigs) => {
+                this.setState({ userShindigs });
+              });
           });
       })
       .catch((error) => {
@@ -32,16 +44,46 @@ class Home extends React.Component {
   }
 
   render() {
-    return (
-      <div className="home">
-        <Jumbotron className="light-jumbotron">
-          <h1 className="display-3 text-blue">Hello, world!</h1>
-          <p className="lead text-blue" >This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+    const { user, userBands, userShindigs } = this.state;
+
+    const userBandComponents = userBands.map(band => (
+      <UserBandListItem
+        band={band}
+        key={band.id}
+      />
+    ));
+
+    const userShindigComponents = userShindigs.map(shindig => (
+      <UserShindigListItem
+        shindig={shindig}
+        key={shindig.id}
+        />
+    ));
+
+    const makeJumbotronContent = () => {
+      if (userBands.length < 1 || userBands === undefined) {
+        return (
+          <p>You are in no bands.</p>
+        );
+      } return (
+        <div>
+          <p className="lead text-blue" >You are currently a member of:</p>
+          {userBandComponents}
           <hr className="my-2" />
-          <p className="text-blue">It uses utility classes for typography and spacing to space content out within the larger container.</p>
+          <p className="text-blue">Here are your upcoming shindigs:</p>
+          {userShindigComponents}
           <p className="lead">
             <Button color="primary">Learn More</Button>
           </p>
+        </div>
+      );
+    };
+
+    return (
+      <div className="home">
+        <Jumbotron className="light-jumbotron">
+          <h1 className="display-3 text-blue">Hello, {user.firstName}!</h1>
+          {makeJumbotronContent()}
         </Jumbotron>
         <Container className="mx-auto">
           <Row>

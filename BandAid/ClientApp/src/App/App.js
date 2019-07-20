@@ -13,7 +13,6 @@ import connection from '../helpers/data/connection';
 import Auth from '../components/pages/Auth/Auth';
 import Home from '../components/pages/Home/Home';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
-import MyFooter from '../components/MyFooter/MyFooter';
 
 import './App.scss';
 

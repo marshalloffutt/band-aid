@@ -18,17 +18,38 @@ namespace BandAid.Data
             _connectionString = dbConfig.Value.ConnectionString;
         }
 
-        public IEnumerable<Shindig> GetAll()
+        public IEnumerable<Shindig> GetAll(int bandId)
         {
             using (var db = new SqlConnection(_connectionString))
             {
                 var events = db.Query<Shindig>(@"
                     Select *
                     From [Shindig]
-                    Where hascometopass = 0").ToList();
+                    Where hascometopass = 0
+                    And bandId = @bandid",
+                    new { bandId } );
 
-                return events;
+                return events.ToList();
             }
+        }
+
+        public IEnumerable<Object> GetUserShindigs(int userId)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var events = db.Query<Object>(@"
+                    Select s.id, s.description, s.eventdate, s.address, s.city, 
+                            s.state, s.zipcode, b.name as band from [shindig] s
+                    Join [band] b on b.Id = s.BandId
+                    Join [bandmember] bm on bm.BandId = b.Id
+                    Join [user] u on u.Id = bm.MusicianId
+                    Where u.id = @userId",
+                    new { userId });
+
+                return events.ToList();
+            }
+
+            throw new Exception("Could not get shindigs.");
         }
 
         public Shindig GetSingle(int id)

@@ -13,7 +13,7 @@ namespace BandAid.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : SecureControllerBase
+    public class UsersController : ControllerBase
     {
         readonly UserRepository _userRepository;
         readonly CreateUserRequestValidator _validator;

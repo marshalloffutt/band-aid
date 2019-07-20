@@ -23,12 +23,16 @@ const tempUser = {
   lastname: '',
   email: '',
   password: '',
+  phone: '',
   address: '',
   city: '',
   state: '',
+  zipcode: '',
   instrument: '',
   yearsOfExp: '',
   imageUrl: '',
+  inactive: 0,
+  dateCreated: '',
 };
 
 class Register extends React.Component {
@@ -49,13 +53,13 @@ class Register extends React.Component {
   }
 
   componentDidMount() {
+    const currentDate = new Date();
+    tempUser.dateCreated = currentDate;
     this.setState({ user: tempUser });
   }
 
   registerClickEvent = (e) => {
     const { user } = this.state;
-    const currentDate = new Date();
-    user.DateCreated = currentDate;
     e.preventDefault();
     authRequests
       .registerUser(user)
@@ -187,7 +191,7 @@ class Register extends React.Component {
                   </Col>
                   <Col md={6}>
                     <FormGroup className="form-group">
-                      <Label htmlFor="inputPhone" className="control-label">Phone:</Label>
+                      <Label htmlFor="inputPhone">Phone:</Label>
                         <Input
                           type="number"
                           className="form-control"
@@ -243,7 +247,7 @@ class Register extends React.Component {
                   </Col>
                   <Col md={4}>
                     <FormGroup className="form-group">
-                        <Label htmlFor="inputState" className="control-label">Zipcode:</Label>
+                        <Label htmlFor="inputZipcode" className="control-label">Zipcode:</Label>
                           <Input
                             type="number"
                             className="form-control"

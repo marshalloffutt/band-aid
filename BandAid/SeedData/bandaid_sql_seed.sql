@@ -264,12 +264,15 @@ VALUES ('Tim','Harley','timmy@harley.com','2019-07-16', 7786546654, '36 Ackerman
 INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
 VALUES ('Mohammad','Khezri','mo@kez-man.com','2019-07-16', 7683376678, '455 Titans Way', 'Los Angeles', 'California', 37201, 'Harpischord', 11, 'https://media.licdn.com/dms/image/C4E03AQGbZbYsKA8QrQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=qvdUbiI5w7cVP6hlWblSCCifQ8ibbdpkz34IHvVxqMk', 0)
 
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
+VALUES ('Marshall','Offutt','marshalloffutt@gmail.com','2019-07-16', 6293335835, '4709 Danby Dr', 'Nashville', 'Tennessee', 37211, 'Guitar', 12, 'https://avatars2.githubusercontent.com/u/40044635?s=460&v=4', 0)
+
 -- Band Seed Data
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
 VALUES ('Of Men and Koalas', 'Country', 'A bad Merle-Haggard cover band.', 'tbd', '2019-07-16', 0, 'Nashville', 'Tennessee')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Satan''s Fingers', 'Metal', 'One of the best ever death metal bands out of Denton.', 'tbd', '2019-07-16', 0, 'Houston', 'Texas')
+VALUES ('Satan''s Fingers', 'Metal', 'The best ever death metal band out of Denton.', 'tbd', '2019-07-16', 0, 'Houston', 'Texas')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
 VALUES ('Rosie and the Doctors', 'Jazz', 'Lose your mind to the soundscape of RND.', 'tbd', '2019-07-16', 0, 'Chicago', 'Illinois')
@@ -311,6 +314,7 @@ INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (18
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (19, 5, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (20, 5, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (21, 5, '2019-07-16')
+INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (23, 2, '2019-07-16')
 
 -- Posting-Replies Seed Data
 INSERT INTO [dbo].[PostingReply] ([PostingId], [MusicianId], [Message], [DateCreated], [Closed]) VALUES (1, 7, 'Hey! I''m really good!!', '2019-07-16', 0)

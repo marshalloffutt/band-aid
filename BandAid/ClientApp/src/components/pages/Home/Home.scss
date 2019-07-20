@@ -13,13 +13,13 @@
   color: $blue-darker;
 }
 
-.am-tile {
-  width: 50px;
-}
+// .am-tile {
+//   width: 50px;
+// }
 
 .myCard {
-  height: 300px !important;
-  width: 300px !important;
+  max-height: 300px !important;
+  max-width: 300px !important;
 }
 
 .card {

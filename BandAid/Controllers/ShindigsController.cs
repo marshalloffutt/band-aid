@@ -23,9 +23,17 @@ namespace BandAid.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetAllShindigs()
+        public ActionResult GetAllShindigs(int bandId)
         {
-            var shindigs = _shindigRepository.GetAll();
+            var shindigs = _shindigRepository.GetAll(bandId);
+
+            return Ok(shindigs);
+        }
+
+        [HttpGet("users/{userId}")]
+        public ActionResult GetUserShindigs(int userId)
+        {
+            var shindigs = _shindigRepository.GetUserShindigs(userId);
 
             return Ok(shindigs);
         }

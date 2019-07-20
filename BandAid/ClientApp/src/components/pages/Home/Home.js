@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Row,
   Col,
-  Button,
   Jumbotron,
   Container,
 } from 'reactstrap';
@@ -72,9 +71,6 @@ class Home extends React.Component {
           <hr className="my-2" />
           <p className="text-blue">Here are your upcoming shindigs:</p>
           {userShindigComponents}
-          <p className="lead">
-            <Button color="primary">Learn More</Button>
-          </p>
         </div>
       );
     };

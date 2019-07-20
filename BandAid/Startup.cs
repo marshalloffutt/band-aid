@@ -70,6 +70,7 @@ namespace BandAid
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 

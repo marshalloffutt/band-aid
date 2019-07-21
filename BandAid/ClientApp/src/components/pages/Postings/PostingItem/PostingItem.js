@@ -10,7 +10,7 @@ export default class PostingItem extends Component {
     const { posting } = this.props;
 
     return (
-      <Card className="posting-card">
+      <Card className="posting-card mt-4">
         <div className="card-body" id={posting.Id}>
           <h4 className="card-title">{posting.Band}</h4>
           <hr></hr>

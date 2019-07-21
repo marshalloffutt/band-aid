@@ -13,8 +13,11 @@ export default class PostingItem extends Component {
       <Card className="posting-card">
         <div className="card-body" id={posting.Id}>
           <h4 className="card-title">{posting.Band}</h4>
+          <hr></hr>
           <h5 className="card-subtitle">{posting.InstrumentRequested}</h5>
-          <p></p>
+          <hr></hr>
+          <p className="card-text">{posting.Genre}</p>
+          <hr></hr>
           <p className="card-text">{posting.Description}</p>
           <Button className="red-button">Reply</Button>
         </div>

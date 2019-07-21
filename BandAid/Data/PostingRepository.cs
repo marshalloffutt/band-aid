@@ -18,6 +18,21 @@ namespace BandAid.Data
             _connectionString = dbConfig.Value.ConnectionString;
         }
 
+        public IEnumerable<Object> GetJustPostings()
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var postings = db.Query<Object>(@"
+                    Select p.Id, p.InstrumentRequested, p.Description,
+                        p.Closed, b.Name as Band
+                    From Posting p
+                    Join band b on b.id = p.bandid
+                    Where p.Closed = 0");
+
+                return postings.ToList();
+            }
+        }
+
         public IEnumerable<Posting> GetAll()
         {
             using (var db = new SqlConnection(_connectionString))

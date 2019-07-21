@@ -22,6 +22,10 @@ class Home extends React.Component {
     userShindigs: [],
   }
 
+  goToPostings = () => {
+    this.props.history.push('/postings');
+  }
+
   componentDidMount() {
     userRequests.getUserIdByEmail()
       .then((userId) => {
@@ -40,6 +44,15 @@ class Home extends React.Component {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  componentWillUnmount() {
+    this.setState = {
+      userId: 0,
+      user: {},
+      userBands: [],
+      userShindigs: [],
+    };
   }
 
   render() {
@@ -84,7 +97,7 @@ class Home extends React.Component {
         <Container className="mx-auto">
           <Row>
             <Col>
-              <div className="card border-dark am-tile myCard" id="postings" onClick={this.changeView}>
+              <div className="card border-dark am-tile jumbo-card" id="postings" onClick={this.goToPostings}>
                   <div className="card-body text-center">
                       <h4 className="card-title"><i className="fas fa-search fa-6x"></i></h4>
                       <h4 className="card-text">Find A Band To Join</h4>
@@ -92,7 +105,7 @@ class Home extends React.Component {
               </div>
             </Col>
             <Col>
-              <div className="card border-dark am-tile myCard" id="orders" onClick={this.changeView}>
+              <div className="card border-dark am-tile jumbo-card" id="orders" onClick={this.changeView}>
                   <div className="card-body text-center">
                       <h4 className="card-title"><i className="fas fa-plus-circle fa-6x"></i></h4>
                       <h4 className="card-text">Start A New Band</h4>

@@ -53,6 +53,18 @@ export default class Postings extends Component {
     }
   }
 
+  buttonFilter = (e) => {
+    const { allPostings } = this.state;
+    const filteredPostings = [];
+    e.preventDefault();
+    allPostings.forEach((result) => {
+      if (result.Genre.toLowerCase() === e.target.id) {
+        filteredPostings.push(result);
+      }
+      this.setState({ postings: filteredPostings });
+    });
+  }
+
   render() {
     const { postings } = this.state;
 
@@ -75,12 +87,12 @@ export default class Postings extends Component {
             <Container className="d-flex justify-content-center mt-4">
               <ButtonToolbar>
                 <ButtonGroup>
-                  <Button>Rock</Button>
-                  <Button>Country</Button>
-                  <Button>Pop</Button>
-                  <Button>Metal</Button>
-                  <Button>Punk</Button>
-                  <Button>Jazz</Button>
+                  <Button id="rock" className="genre-button" onClick={this.buttonFilter}>Rock</Button>
+                  <Button id="country" className="genre-button" onClick={this.buttonFilter}>Country</Button>
+                  <Button id="pop" className="genre-button" onClick={this.buttonFilter}>Pop</Button>
+                  <Button id="metal" className="genre-button" onClick={this.buttonFilter}>Metal</Button>
+                  <Button id="punk" className="genre-button" onClick={this.buttonFilter}>Punk</Button>
+                  <Button id="jazz" className="genre-button" onClick={this.buttonFilter}>Jazz</Button>
                 </ButtonGroup>
               </ButtonToolbar>
             </Container>

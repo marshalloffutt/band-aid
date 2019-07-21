@@ -4,10 +4,10 @@
   background-color: $blue;
 }
 
-.navbar-brand {
-  color: $white;
-}
-
 .logout-link {
   cursor: pointer;
+}
+
+.nav-brand {
+  color: $red !important;
 }

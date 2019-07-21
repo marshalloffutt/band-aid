@@ -35,7 +35,7 @@ class MyNavbar extends React.Component {
     return (
       <div className="my-navbar">
         <Navbar style={{ backgroundColor: '#1f325a' }} dark expand="md">
-          <NavbarBrand href="/">Band★Aid</NavbarBrand>
+          <NavbarBrand className="nav-brand" href="/">Band★Aid</NavbarBrand>
           <NavbarToggler onClick={e => this.toggle(e)}/>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

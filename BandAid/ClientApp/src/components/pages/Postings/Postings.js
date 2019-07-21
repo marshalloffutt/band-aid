@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import SearchField from 'react-search-field';
-import { Container } from 'reactstrap';
+import {
+  Container,
+  Button,
+  ButtonToolbar,
+  ButtonGroup,
+} from 'reactstrap';
 import PostingItem from './PostingItem/PostingItem';
 
 import postingRequests from '../../../helpers/data/postingRequests';
@@ -67,6 +72,18 @@ export default class Postings extends Component {
               searchText=""
               classNames="searchBar"
             />
+            <Container className="d-flex justify-content-center mt-4">
+              <ButtonToolbar>
+                <ButtonGroup>
+                  <Button>Rock</Button>
+                  <Button>Country</Button>
+                  <Button>Pop</Button>
+                  <Button>Metal</Button>
+                  <Button>Punk</Button>
+                  <Button>Jazz</Button>
+                </ButtonGroup>
+              </ButtonToolbar>
+            </Container>
         <Container className="mt-5">
           <div className="card-deck">
             {postingsItemComponents}

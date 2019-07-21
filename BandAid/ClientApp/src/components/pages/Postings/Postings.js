@@ -9,17 +9,43 @@ import './Postings.scss';
 
 export default class Postings extends Component {
   state = {
+    allPostings: [],
     postings: [],
+    filteredPostings: [],
   }
 
   componentDidMount() {
     postingRequests.getAll()
       .then((postings) => {
         this.setState({ postings });
+        this.setState({ allPostings: postings });
       })
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  onChange = (value, e) => {
+    const { allPostings } = this.state;
+    const filteredPostings = [];
+    e.preventDefault();
+    if (!value) {
+      this.setState({ filteredPostings: allPostings });
+      this.setState({ postings: allPostings });
+    } else {
+      this.setState({ filteredPostings: [] });
+      allPostings.forEach((result) => {
+        if (result.Band.toLowerCase().includes(value.toLowerCase())
+        || result.Description.toLowerCase().includes(value.toLowerCase())
+        || result.InstrumentRequested.toLowerCase().includes(value.toLowerCase())) {
+          filteredPostings.push(result);
+        }
+        this.setState({ postings: filteredPostings });
+        if (!value) {
+          this.setState({ postings: allPostings });
+        }
+      });
+    }
   }
 
   render() {
@@ -42,9 +68,9 @@ export default class Postings extends Component {
               classNames="searchBar"
             />
         <Container className="mt-5">
-        <div className="card-deck">
-          {postingsItemComponents}
-        </div>
+          <div className="card-deck">
+            {postingsItemComponents}
+          </div>
         </Container>
       </div>
     );

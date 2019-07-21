@@ -28,7 +28,7 @@ export default class Postings extends Component {
     const postingsItemComponents = postings.map(posting => (
       <PostingItem
         posting={posting}
-        key={posting.id}
+        key={posting.Id}
         />
     ));
 
@@ -41,8 +41,8 @@ export default class Postings extends Component {
               searchText=""
               classNames="searchBar"
             />
-        <Container>
-        <div class="card-deck">
+        <Container className="mt-5">
+        <div className="card-deck">
           {postingsItemComponents}
         </div>
         </Container>

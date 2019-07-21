@@ -22,6 +22,14 @@ namespace BandAid.Controllers
             _postingRepository = postingRepository;
         }
 
+        [HttpGet("open")]
+        public ActionResult GetOpen()
+        {
+            var postings = _postingRepository.GetJustPostings();
+
+            return Ok(postings);
+        }
+
         [HttpGet]
         public ActionResult GetAllPostings()
         {
@@ -29,6 +37,7 @@ namespace BandAid.Controllers
 
             return Ok(postings);
         }
+
 
         [HttpGet("{id}")]
         public ActionResult GetSinglePosting(int id)

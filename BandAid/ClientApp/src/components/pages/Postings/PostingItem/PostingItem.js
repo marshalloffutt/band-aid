@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import {
   Card,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
   Button,
 } from 'reactstrap';
 import './PostingItem.scss';
@@ -14,13 +10,14 @@ export default class PostingItem extends Component {
     const { posting } = this.props;
 
     return (
-      <Card>
-        <CardBody>
-          <CardTitle>{posting.Band}</CardTitle>
-          <CardSubtitle>{posting.InstrumentRequested}</CardSubtitle>
-          <CardText>{posting.Description}</CardText>
+      <Card className="posting-card">
+        <div className="card-body" id={posting.Id}>
+          <h4 className="card-title">{posting.Band}</h4>
+          <h5 className="card-subtitle">{posting.InstrumentRequested}</h5>
+          <p></p>
+          <p className="card-text">{posting.Description}</p>
           <Button className="red-button">Reply</Button>
-        </CardBody>
+        </div>
       </Card>
     );
   }

@@ -65,6 +65,11 @@ export default class Postings extends Component {
     });
   }
 
+  showAll = (e) => {
+    const { allPostings } = this.state;
+    this.setState({ postings: allPostings });
+  }
+
   render() {
     const { postings } = this.state;
 
@@ -87,6 +92,7 @@ export default class Postings extends Component {
             <Container className="d-flex justify-content-center mt-4">
               <ButtonToolbar>
                 <ButtonGroup>
+                  <Button id="all" className="genre-button" onClick={this.showAll}>Show All</Button>
                   <Button id="rock" className="genre-button" onClick={this.buttonFilter}>Rock</Button>
                   <Button id="country" className="genre-button" onClick={this.buttonFilter}>Country</Button>
                   <Button id="pop" className="genre-button" onClick={this.buttonFilter}>Pop</Button>

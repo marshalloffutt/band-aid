@@ -9,6 +9,10 @@ import {
   Nav,
   NavItem,
   NavLink,
+  DropdownToggle,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
 
 import './MyNavbar.scss';
@@ -31,6 +35,23 @@ class MyNavbar extends React.Component {
 
   render() {
     const { isAuthed, logoutClicky } = this.props;
+    const profileImage = 'https://avatars2.githubusercontent.com/u/40044635?s=460&v=4';
+
+    const buildDropdown = () => {
+      if (isAuthed) {
+        return (
+          <UncontrolledDropdown>
+                <DropdownToggle nav caret>
+                  <img className="navIcon photoIcon" src={profileImage} alt="ProfilePic" />
+                </DropdownToggle>
+                <DropdownMenu right className="dropdown-menu-blue" >
+                  <DropdownItem tag={RRNavLink} className="dd-link nav-link" to="/profile">Your Profile</DropdownItem>
+                  <DropdownItem className="dd-link nav-link" onClick={logoutClicky} to="/home">Logout</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+        );
+      } return '';
+    };
 
     return (
       <div className="my-navbar">
@@ -42,9 +63,7 @@ class MyNavbar extends React.Component {
               <NavItem className="nav-link">
                 { isAuthed ? <NavLink tag={RRNavLink} to='/postings'>Postings</NavLink> : ''}
               </NavItem>
-              <NavItem className="nav-link">
-              { isAuthed ? <NavLink className='logout-link' onClick={logoutClicky}>Logout</NavLink> : ''}
-              </NavItem>
+              {buildDropdown()}
             </Nav>
           </Collapse>
         </Navbar>

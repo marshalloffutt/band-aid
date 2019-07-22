@@ -16,6 +16,7 @@ import Postings from '../components/pages/Postings/Postings';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 
 import './App.scss';
+import userRequests from '../helpers/data/userRequests';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
@@ -34,6 +35,14 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
 class App extends React.Component {
   state = {
     authed: false,
+    currentUser: {},
+  }
+
+  getUser = () => {
+    userRequests.getUser()
+      .then((user) => {
+        this.setState({ currentUser: user });
+      });
   }
 
   componentDidMount() {
@@ -41,6 +50,7 @@ class App extends React.Component {
 
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        this.getUser();
         this.setState({
           authed: true,
         });
@@ -58,7 +68,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { authed } = this.state;
+    const { authed, currentUser } = this.state;
     const logoutClicky = () => {
       authRequests.logoutUser();
       this.setState({ authed: false });
@@ -68,7 +78,7 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-              <MyNavbar isAuthed={authed} logoutClicky={logoutClicky}/>
+              <MyNavbar isAuthed={authed} currentUser={currentUser} logoutClicky={logoutClicky}/>
               <Switch>
                 <PrivateRoute path='/' exact component={Home} authed={this.state.authed} />
                 <PrivateRoute path='/home' component={Home} authed={this.state.authed} />

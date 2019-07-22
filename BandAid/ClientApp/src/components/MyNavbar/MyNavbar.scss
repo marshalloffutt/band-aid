@@ -11,3 +11,21 @@
 .nav-brand {
   color: $red !important;
 }
+
+.photoIcon {
+  height: 35px;
+  border-radius: 50%;
+}
+
+.dd-link:hover {
+  background: $red;
+}
+
+.dropdown-item.active {
+  background-color: $red !important;
+}
+
+.dropdown-menu-blue {
+  background-color: $blue;
+  border-color: transparent;
+}

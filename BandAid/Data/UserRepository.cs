@@ -93,7 +93,7 @@ namespace BandAid.Data
         }
 
         public User AddUser(string firstName, string lastName, string email, DateTime dateCreated, long phone,
-            string address, string city, string state, string instrument, int yearsOfExp, string imageUrl, bool inactive)
+            string address, string city, string state, int zipcode, string instrument, int yearsOfExp, string imageUrl, bool inactive)
         {
             using (var db = new SqlConnection(_connectionString))
             {
@@ -107,13 +107,14 @@ namespace BandAid.Data
                         [Address],
                         [City],
                         [State],
+                        [Zipcode],
                         [Instrument],
                         [YearsOfExp],
                         [ImageUrl],
                         [Inactive])
                     Output inserted.*
                     Values(@firstname, @lastname, @email, @datecreated, @phone, @address,  
-                    @city, @state, @instrument, @yearsofexp, @imageurl, @inactive)";
+                    @city, @state, @zipcode, @instrument, @yearsofexp, @imageurl, @inactive)";
 
                 var parameters = new
                 {
@@ -125,6 +126,7 @@ namespace BandAid.Data
                     Address = address,
                     City = city,
                     State = state,
+                    Zipcode = zipcode,
                     Instrument = instrument,
                     YearsOfExp = yearsOfExp,
                     ImageUrl = imageUrl,
@@ -156,6 +158,7 @@ namespace BandAid.Data
                             address = @address,
                             city = @city,
                             state = @state,
+                            zipcode = @zipcode,
                             instrument = @instrument,
                             yearsOfExp = @yearsofexp,
                             imageUrl = @imageurl,

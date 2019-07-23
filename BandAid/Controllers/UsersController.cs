@@ -57,6 +57,7 @@ namespace BandAid.Controllers
                 createRequest.Address,
                 createRequest.City,
                 createRequest.State,
+                createRequest.Zipcode,
                 createRequest.Instrument,
                 createRequest.YearsOfExp,
                 createRequest.ImageUrl,

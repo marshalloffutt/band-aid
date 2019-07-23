@@ -1,0 +1,7 @@
+@import '../../../styles/variables';
+
+.user-photo {
+  border-radius: 50%;
+  max-height: 200px;
+  border: 6px solid $red;
+}

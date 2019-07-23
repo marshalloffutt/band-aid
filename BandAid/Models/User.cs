@@ -16,6 +16,7 @@ namespace BandAid.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public int Zipcode { get; set; }
         public string Instrument { get; set; }
         public int YearsOfExp { get; set; }
         public string ImageUrl { get; set; }

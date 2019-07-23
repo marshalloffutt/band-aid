@@ -24,7 +24,7 @@ namespace BandAid.Data
             {
                 var postings = db.Query<Object>(@"
                     Select p.Id, p.InstrumentRequested, p.Description,
-                        p.Closed, b.Name as Band, b.Genre
+                        p.BandId, p.Closed, b.Name as Band, b.Genre
                     From Posting p
                     Join band b on b.id = p.bandid
                     Where p.Closed = 0");

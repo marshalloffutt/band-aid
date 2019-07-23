@@ -38,11 +38,3 @@
   justify-content: center;;
   flex-direction: row;
 }
-
-.blue-button {
-  background-color: $blue-darker;
-  border-radius: 1px;
-  &:hover {
-    background-color: $blue-lighter;
-  }
-}

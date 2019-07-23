@@ -293,7 +293,7 @@ class Register extends React.Component {
                     <FormGroup className="form-group">
                         <Button
                           type="submit"
-                          className="btn btn-default red-button"
+                          className="btn btn-danger"
                           onClick={this.registerClickEvent}
                         >
                           Register
@@ -310,7 +310,13 @@ class Register extends React.Component {
     return (
         <div className="register">
         <div className='account'>
-          <Button className='btn red-button' onClick={this.toggle}>Register</Button>
+        <Button
+            outline
+            color="danger"
+            className="m-2"
+            onClick={this.toggle}>Register
+          </Button>
+
         </div>
       <div>{buildModal()}</div>
       </div>

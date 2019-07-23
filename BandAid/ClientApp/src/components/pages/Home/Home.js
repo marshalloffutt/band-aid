@@ -1,9 +1,8 @@
 import React from 'react';
 import {
   Jumbotron,
+  Button,
 } from 'reactstrap';
-
-import { Button } from 'react-bulma-components/full';
 
 import UserBandListItem from './UserBandListItem/UserBandListItem';
 import UserShindigListItem from './UserShindigListItem/UserShindigListItem';

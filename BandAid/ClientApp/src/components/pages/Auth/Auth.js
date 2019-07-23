@@ -5,10 +5,8 @@ import {
   Input,
   Row,
   Col,
-  Jumbotron,
+  Button,
 } from 'reactstrap';
-
-import { Button } from 'react-bulma-components/full';
 
 import authRequests from '../../../helpers/data/authRequests';
 import Register from '../../Register/Register';
@@ -51,7 +49,6 @@ class Auth extends React.Component {
     render() {
       const { user } = this.state;
       return (
-              <Jumbotron className="auth-jumbotron mt-4">
               <div id="login-form mt-5">
                 <Row>
                     <Col>
@@ -88,8 +85,7 @@ class Auth extends React.Component {
                         <Button
                           className="m-2"
                           color="danger"
-                          rounded
-                          outlined
+                          outline
                           onClick={this.loginClickEvent}
                         >
                         Login
@@ -101,7 +97,6 @@ class Auth extends React.Component {
                     </FormGroup>
                 </Form>
                 </div>
-              </Jumbotron>
       );
     }
 }

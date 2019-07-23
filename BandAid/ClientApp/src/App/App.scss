@@ -11,3 +11,21 @@ body {
   background-color: $slate;
   height: 100%;
 }
+
+.btn-danger {
+  border-radius: 40px !important;
+  background-color: $red;
+  border-color: $red;
+  &:hover {
+    background-color: $red-lighter;
+  }
+}
+
+.btn-outline-danger {
+  border-radius: 40px !important;
+  border-color: $red;
+  color: $red;
+  &:hover {
+    background-color: $red;
+  }
+}

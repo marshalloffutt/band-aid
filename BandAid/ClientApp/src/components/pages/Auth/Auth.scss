@@ -1,7 +1,16 @@
 @import '../../../styles/variables';
 
 .Login {
-  background-color: $white;
+  background-color: $slate;
+}
+
+.auth-jumbotron {
+  background-color: $slate;
+  background-position: center;
+  background-size: cover;
+  border-radius: 0;
+  height: 90vh;
+  cursor: pointer;
 }
 
 .bandImg {

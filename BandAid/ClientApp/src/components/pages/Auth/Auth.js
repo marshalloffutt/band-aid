@@ -1,19 +1,19 @@
 import React from 'react';
 import {
-  Button,
   Form,
   FormGroup,
   Input,
   Row,
   Col,
-  Container,
+  Jumbotron,
 } from 'reactstrap';
+
+import { Button } from 'react-bulma-components/full';
+
 import authRequests from '../../../helpers/data/authRequests';
 import Register from '../../Register/Register';
 
-import photo from '../../../images/band-image.png';
 import './Auth.scss';
-
 
 class Auth extends React.Component {
     state = {
@@ -51,15 +51,14 @@ class Auth extends React.Component {
     render() {
       const { user } = this.state;
       return (
-            <Container className="Login">
-                <div>
-                  <img className='bandImg' src={ photo } alt='logo'/>
-                </div>
-                <div id="login-form mt-5">
+              <Jumbotron className="auth-jumbotron mt-4">
+              <div id="login-form mt-5">
                 <Row>
-                    <Col><h2 className="text-center mt-5">Login to Band★Aid:</h2></Col>
+                    <Col>
+                      <h1 className="title is-1 mt-5 red">Band<span className="gold">★</span>Aid </h1>
+                    </Col>
                 </Row>
-                <Form>
+                <Form className="mt-4">
                     <FormGroup className="form-group">
                       <div className="input-field">
                         <Input
@@ -87,9 +86,11 @@ class Auth extends React.Component {
                     <FormGroup className="formButtons">
                     <div className="">
                         <Button
-                        type="submit"
-                        className="btn col-xs-12 mr-2 blue-button"
-                        onClick={this.loginClickEvent}
+                          className="m-2"
+                          color="danger"
+                          rounded
+                          outlined
+                          onClick={this.loginClickEvent}
                         >
                         Login
                         </Button>
@@ -100,7 +101,7 @@ class Auth extends React.Component {
                     </FormGroup>
                 </Form>
                 </div>
-            </Container>
+              </Jumbotron>
       );
     }
 }

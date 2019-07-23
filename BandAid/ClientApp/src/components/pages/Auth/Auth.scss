@@ -1,7 +1,13 @@
 @import '../../../styles/variables';
 
 .Login {
-  background-color: $white;
+  background-color: $slate;
+}
+
+.auth-jumbotron {
+  background-color: $slate;
+  border-radius: 0;
+  height: 80vh;
 }
 
 .bandImg {
@@ -28,12 +34,4 @@
   display: flex;
   justify-content: center;;
   flex-direction: row;
-}
-
-.blue-button {
-  background-color: $blue-darker;
-  border-radius: 1px;
-  &:hover {
-    background-color: $blue-lighter;
-  }
 }

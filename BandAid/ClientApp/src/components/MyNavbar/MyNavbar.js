@@ -57,7 +57,7 @@ class MyNavbar extends React.Component {
     return (
       <div className="my-navbar">
         <Navbar className="slate" dark expand="md">
-          <NavbarBrand className="nav-brand" href="/">Band<span className="gold">★</span>Aid</NavbarBrand>
+          { isAuthed ? <NavbarBrand className="nav-brand" href="/">Band<span className="gold">★</span>Aid</NavbarBrand> : ''}
           <NavbarToggler onClick={e => this.toggle(e)}/>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

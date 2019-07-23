@@ -6,6 +6,7 @@ import {
   Row,
   Col,
   Button,
+  Jumbotron,
 } from 'reactstrap';
 
 import authRequests from '../../../helpers/data/authRequests';
@@ -49,6 +50,7 @@ class Auth extends React.Component {
     render() {
       const { user } = this.state;
       return (
+        <Jumbotron className="auth-jumbotron">
               <div id="login-form mt-5">
                 <Row>
                     <Col>
@@ -97,6 +99,7 @@ class Auth extends React.Component {
                     </FormGroup>
                 </Form>
                 </div>
+                </Jumbotron>
       );
     }
 }

@@ -14,7 +14,7 @@ export default class PostingItem extends Component {
     return (
       <Card className="posting-card mt-4">
         <div className="card-body" id={posting.Id}>
-          <Link className="card-title" to={`/bands/${id}`}>{posting.Band}</Link>
+          <Link className="card-title" to={{ pathname: `/bands/${id}`, state: { id } }}>{posting.Band}</Link>
           <hr></hr>
           <h5 className="card-subtitle">{posting.InstrumentRequested}</h5>
           <hr></hr>

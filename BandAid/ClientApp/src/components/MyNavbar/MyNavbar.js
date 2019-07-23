@@ -45,8 +45,8 @@ class MyNavbar extends React.Component {
                 <DropdownToggle nav caret>
                   <img className="navIcon photoIcon" src={profileImage} alt="userphoto" />
                 </DropdownToggle>
-                <DropdownMenu right className="dropdown-menu-blue" >
-                  <DropdownItem tag={RRNavLink} className="dd-link nav-link" to={`/profile/${id}`} currentUser={currentUser}>Your Profile</DropdownItem>
+                <DropdownMenu right className="dropdown-menu-slate" >
+                  <DropdownItem tag={RRNavLink} className="dd-link nav-link" to={`/profile/${id}`} >Your Profile</DropdownItem>
                   <DropdownItem className="dd-link nav-link" onClick={logoutClicky} to="/home">Logout</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -56,8 +56,8 @@ class MyNavbar extends React.Component {
 
     return (
       <div className="my-navbar">
-        <Navbar style={{ backgroundColor: '#1f325a' }} dark expand="md">
-          <NavbarBrand className="nav-brand" href="/">Band★Aid</NavbarBrand>
+        <Navbar className="slate" dark expand="md">
+          <NavbarBrand className="nav-brand" href="/">Band<span className="gold">★</span>Aid</NavbarBrand>
           <NavbarToggler onClick={e => this.toggle(e)}/>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

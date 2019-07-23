@@ -1,7 +1,13 @@
 @import '../../../styles/variables';
 
 .user-photo {
-  border-radius: 50%;
+  border-radius: 6px;
   max-height: 200px;
   border: 6px solid $red;
+}
+
+.user-card {
+  border: 6px solid $red;
+  border-radius: 6px;
+  padding: 60px;
 }

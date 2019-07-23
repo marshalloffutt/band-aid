@@ -85,7 +85,7 @@ class Auth extends React.Component {
                     <FormGroup className="formButtons">
                     <div className="">
                         <Button
-                          className="m-2"
+                          className="m-2 ba-btn-danger-outline"
                           color="danger"
                           outline
                           onClick={this.loginClickEvent}

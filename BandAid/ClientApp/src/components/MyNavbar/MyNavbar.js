@@ -46,7 +46,7 @@ class MyNavbar extends React.Component {
                   <img className="navIcon photoIcon" src={profileImage} alt="userphoto" />
                 </DropdownToggle>
                 <DropdownMenu right className="dropdown-menu-blue" >
-                  <DropdownItem tag={RRNavLink} className="dd-link nav-link" to={`/profile/${id}`} currentUser={currentUser}>Your Profile</DropdownItem>
+                  <DropdownItem tag={RRNavLink} className="dd-link nav-link" to={`/profile/${id}`} >Your Profile</DropdownItem>
                   <DropdownItem className="dd-link nav-link" onClick={logoutClicky} to="/home">Logout</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

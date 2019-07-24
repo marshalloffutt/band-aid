@@ -64,6 +64,9 @@ class MyNavbar extends React.Component {
               <NavItem className="nav-link">
                 { isAuthed ? <NavLink tag={RRNavLink} to='/postings'>Postings</NavLink> : ''}
               </NavItem>
+              <NavItem className="nav-link">
+                { isAuthed ? <NavLink tag={RRNavLink} to='/bands'>Bands</NavLink> : ''}
+              </NavItem>
               {buildDropdown()}
             </Nav>
           </Collapse>

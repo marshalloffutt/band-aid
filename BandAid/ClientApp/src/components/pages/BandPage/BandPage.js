@@ -89,18 +89,18 @@ export default class BandPage extends Component {
               <p className="white">{currentBand.description}</p>
             </Col>
             <Col md={6}>
-              <h3 className="red">Postings</h3>
-              {postingComponents}
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
               <h3 className="red">Roster</h3>
               {musicianComponents}
             </Col>
+          </Row>
+          <Row className="mb-4">
             <Col md={6}>
-              <h3 className="red">Upcoming Events</h3>
+            <h3 className="red">Upcoming Events</h3>
               {shindigComponents}
+            </Col>
+            <Col md={6}>
+              <h3 className="red">Postings</h3>
+              {postingComponents}
             </Col>
           </Row>
         </Container>

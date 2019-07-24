@@ -14,7 +14,7 @@ export default class YourProfile extends Component {
 
     return (
     <Container>
-      <h1 className="title is-1 mt-5 red">Your<span className="gold">★</span>Profile </h1>
+      <h1 className="title is-1 mt-5 red">Your<span className="gold ml-2 mr-2">★</span>Profile </h1>
       <Container className="mt-4 user-card">
         <Row>
           <Col md={4}>

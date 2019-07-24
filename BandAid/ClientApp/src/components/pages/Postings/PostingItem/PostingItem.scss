@@ -6,9 +6,6 @@
   border: 2px solid $red !important;
   border-radius: 1;
   border-width: 0;
-  // border-color: black !important;
-  // background-color: $blue;
-  // color: $white;
   margin: 0 auto;
   &:hover {
     border-color: $blue-lighter !important;
@@ -17,5 +14,5 @@
 }
 
 .card-title {
-  color: $teal-darker;
+  color: $slate;
 }

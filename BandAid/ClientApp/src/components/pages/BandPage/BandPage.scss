@@ -1,1 +1,6 @@
-@import '../../styles/variables';
+@import '../../../styles/variables';
+
+.band-jumbotron {
+  background-color: $red;
+  border-radius: 0;
+}

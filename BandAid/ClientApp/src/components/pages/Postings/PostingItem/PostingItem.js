@@ -4,6 +4,9 @@ import {
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
+import roleTranslator from '../../../../helpers/roleTranslator';
+
 import './PostingItem.scss';
 
 export default class PostingItem extends Component {
@@ -14,12 +17,10 @@ export default class PostingItem extends Component {
     return (
       <Card className="posting-card mt-4">
         <div className="card-body" id={posting.Id}>
-          <Link className="card-title" to={`/bands/${id}`}>{posting.Band}</Link>
-          <hr></hr>
-          <h5 className="card-subtitle">{posting.InstrumentRequested}</h5>
+          <h3>{roleTranslator(posting.InstrumentRequested)}</h3>
+          <Link className="card-title" to={{ pathname: `/bands/${id}`, state: { id } }}>{posting.Band}</Link>
           <hr></hr>
           <p className="card-text">{posting.Genre}</p>
-          <hr></hr>
           <p className="card-text">{posting.Description}</p>
           <Button className="btn-danger">Reply</Button>
         </div>

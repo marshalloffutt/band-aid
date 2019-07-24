@@ -82,7 +82,7 @@ export default class Postings extends Component {
 
     return (
       <div>
-        <h1 className="title is-1 mt-5 red">Postings</h1>
+        <h1 className="title is-1 mt-5 red mb-4">Postings</h1>
         <SearchField
               placeholder="Search Postings..."
               onChange={this.onChange}

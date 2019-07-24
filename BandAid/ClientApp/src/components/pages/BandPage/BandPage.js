@@ -4,6 +4,7 @@ import {
   Row,
   Jumbotron,
   Container,
+  Table,
 } from 'reactstrap';
 
 import MusicianListItem from './MusicianListItem/MusicianListItem';
@@ -96,7 +97,19 @@ export default class BandPage extends Component {
           <Row className="mb-4">
             <Col md={6}>
             <h3 className="red">Upcoming Events</h3>
+            <Table className="white">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody>
               {shindigComponents}
+              </tbody>
+            </Table>
+
             </Col>
             <Col md={6}>
               <h3 className="red">Postings</h3>

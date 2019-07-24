@@ -269,19 +269,19 @@ VALUES ('Marshall','Offutt','marshalloffutt@gmail.com','2019-07-16', 6293335835,
 
 -- Band Seed Data
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Of Men and Koalas', 'Country', 'A bad Merle-Haggard cover band.', 'tbd', '2019-07-16', 0, 'Nashville', 'Tennessee')
+VALUES ('Of Men and Koalas', 'Country', 'A bad Merle-Haggard cover band.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/of-men-and-koalas.PNG?raw=true', '2019-07-16', 0, 'Nashville', 'Tennessee')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Satan''s Fingers', 'Metal', 'The best ever death metal band out of Denton.', 'tbd', '2019-07-16', 0, 'Houston', 'Texas')
+VALUES ('Satan''s Fingers', 'Metal', 'The best ever death metal band out of Denton.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/satans-fingers.PNG?raw=true', '2019-07-16', 0, 'Houston', 'Texas')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Rosie and the Doctors', 'Jazz', 'Lose your mind to the soundscape of RND.', 'tbd', '2019-07-16', 0, 'Chicago', 'Illinois')
+VALUES ('Rosie and the Doctors', 'Jazz', 'Lose your mind to the soundscape of RND.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/rosie-and-the-doctors.PNG?raw=true', '2019-07-16', 0, 'Chicago', 'Illinois')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Arthur''s Midnight Goldfish', 'Rock', 'The type of soft-rock your dad used to listen to.', 'tbd', '2019-07-16', 0, 'Nashville', 'Tennessee')
+VALUES ('Arthur''s Midnight Goldfish', 'Rock', 'The type of soft-rock your dad used to listen to.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/arthurs-midnight-goldfish.PNG?raw=true', '2019-07-16', 0, 'Nashville', 'Tennessee')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Compasshead', 'Punk', 'Bad music for bad people.', 'tbd', '2019-07-16', 0, 'Los Angeles', 'California')
+VALUES ('Compasshead', 'Punk', 'Bad music for bad people.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/compasshead.PNG?raw=true', '2019-07-16', 0, 'Los Angeles', 'California')
 
 -- Posting Seed Data
 INSERT INTO [dbo].[Posting] ([InstrumentRequested], [Description], [Closed], [BandId]) VALUES ('Guitar', 'Needs to be a good soloist.', 0, 1)

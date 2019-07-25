@@ -9,6 +9,7 @@ import {
 import PostingItem from './PostingItem/PostingItem';
 
 import postingRequests from '../../../helpers/data/postingRequests';
+import postingReplyRequests from '../../../helpers/data/postingReplyRequests';
 import userRequests from '../../../helpers/data/userRequests';
 
 import './Postings.scss';
@@ -59,6 +60,24 @@ export default class Postings extends Component {
     }
   }
 
+  formSubmitEvent = (reply) => {
+    postingReplyRequests.createPostingReply(reply)
+      .then(() => {
+        postingRequests.getAll()
+          .then((postings) => {
+            this.setState({ postings });
+            this.setState({ allPostings: postings });
+            userRequests.getUser()
+              .then((currentUser) => {
+                this.setState({ currentUser });
+              });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+  }
+
   buttonFilter = (e) => {
     const { allPostings } = this.state;
     const filteredPostings = [];
@@ -84,6 +103,7 @@ export default class Postings extends Component {
         posting={posting}
         key={posting.Id}
         musicianId={currentUser.id}
+        formSubmit={this.formSubmitEvent}
         />
     ));
 

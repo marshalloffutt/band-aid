@@ -11,7 +11,7 @@ import './PostingItem.scss';
 
 export default class PostingItem extends Component {
   render() {
-    const { posting, musicianId } = this.props;
+    const { posting, musicianId, formSubmit } = this.props;
     const id = posting.BandId;
 
     return (
@@ -27,7 +27,7 @@ export default class PostingItem extends Component {
                 className="btn-danger"
                 postingId = {posting.Id}
                 musicianId = {musicianId}
-                // onSubmit={this.formSubmitEvent}
+                formSubmit={formSubmit}
             />
         </div>
       </Card>

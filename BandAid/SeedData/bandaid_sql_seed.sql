@@ -267,12 +267,16 @@ VALUES ('Mohammad','Khezri','mo@kez-man.com','2019-07-16', 7683376678, '455 Tita
 INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
 VALUES ('Marshall','Offutt','marshalloffutt@gmail.com','2019-07-16', 6293335835, '4709 Danby Dr', 'Nashville', 'Tennessee', 37211, 'Guitar', 12, 'https://avatars2.githubusercontent.com/u/40044635?s=460&v=4', 0)
 
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
+VALUES ('Charles','Woodring','chuckwoody@gmail.com','2019-07-16', 54865848, '2101 Nashville School', 'Nashville', 'Tennessee', 32344, 'Bass', 11, 'https://avatars2.githubusercontent.com/u/41008544?s=460&v=4', 0)
+
+
 -- Band Seed Data
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
 VALUES ('Of Men and Koalas', 'Country', 'A bad Merle-Haggard cover band.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/of-men-and-koalas.PNG?raw=true', '2019-07-16', 0, 'Nashville', 'Tennessee')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Satan''s Fingers', 'Metal', 'The best ever death metal band out of Denton.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/satans-fingers.PNG?raw=true', '2019-07-16', 0, 'Houston', 'Texas')
+VALUES ('Van Gogh''s Ear', 'Rock', 'Less a band and more an esoteric think-tank, Van Gogh’’s Ear can only be defined as complex algorithms set to the rhythm of jazz and post-rock.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/van-goghs-ear.PNG?raw=true', '2019-07-16', 0, 'Houston', 'Texas')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
 VALUES ('Rosie and the Doctors', 'Jazz', 'Lose your mind to the soundscape of RND.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/rosie-and-the-doctors.PNG?raw=true', '2019-07-16', 0, 'Chicago', 'Illinois')
@@ -302,11 +306,6 @@ INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (2,
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (3, 4, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (4, 4, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (5, 4, '2019-07-16')
-INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (8, 2, '2019-07-16')
-INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (10, 2, '2019-07-16')
-INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (11, 2, '2019-07-16')
-INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (13, 2, '2019-07-16')
-INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (14, 2, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (15, 3, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (16, 3, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (17, 3, '2019-07-16')
@@ -315,6 +314,9 @@ INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (19
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (20, 5, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (21, 5, '2019-07-16')
 INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (23, 2, '2019-07-16')
+INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (24, 2, '2019-07-16')
+INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (7, 2, '2019-07-16')
+INSERT INTO [dbo].[BandMember] ([MusicianId], [BandId], [DateJoined]) VALUES (2, 2, '2019-07-16')
 
 -- Posting-Replies Seed Data
 INSERT INTO [dbo].[PostingReply] ([PostingId], [MusicianId], [Message], [DateCreated], [Closed]) VALUES (1, 7, 'Hey! I''m really good!!', '2019-07-16', 0)

@@ -9,6 +9,7 @@ import {
 import PostingItem from './PostingItem/PostingItem';
 
 import postingRequests from '../../../helpers/data/postingRequests';
+import userRequests from '../../../helpers/data/userRequests';
 
 import './Postings.scss';
 
@@ -17,6 +18,7 @@ export default class Postings extends Component {
     allPostings: [],
     postings: [],
     filteredPostings: [],
+    currentUser: {},
   }
 
   componentDidMount() {
@@ -24,6 +26,10 @@ export default class Postings extends Component {
       .then((postings) => {
         this.setState({ postings });
         this.setState({ allPostings: postings });
+        userRequests.getUser()
+          .then((currentUser) => {
+            this.setState({ currentUser });
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -71,12 +77,13 @@ export default class Postings extends Component {
   }
 
   render() {
-    const { postings } = this.state;
+    const { postings, currentUser } = this.state;
 
     const postingsItemComponents = postings.map(posting => (
       <PostingItem
         posting={posting}
         key={posting.Id}
+        musicianId={currentUser.id}
         />
     ));
 

@@ -2,6 +2,25 @@
 A networking platform connecting bands with talented musicians. This is my full-stack capstone
 project at Nashville Software School.
 
+## Screenshots
+Authentication
+![Authentication](/BandAid/images/auth.png)
+
+Registration
+![Regitration](/BandAid/images/register.png)
+
+Home
+![Home](/BandAid/images/home.png)
+
+Bands View
+![Bands](/BandAid/images/bands.png)
+
+Single Band View
+![Single](/BandAid/images/single-band.png)
+
+Postings View
+![Posting](/BandAid/images/postings.png)
+
 ## Technologies Used
 * C#
 * ASP.Net

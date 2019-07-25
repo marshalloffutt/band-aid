@@ -46,12 +46,15 @@ class AddPostingReplyModal extends React.Component {
 
   messageChange = e => this.formFieldStringState('message', e);
 
-  formSubmit = (e) => {
-    const { onSubmit } = this.props;
-    const reply = { ...this.state.reply };
+  onSubmit = (e) => {
+    const { formSubmit } = this.props;
+    const reply = { ...this.state.newReply };
     reply.dateCreated = new Date();
-    reply.bandId = 1;
-    onSubmit(reply);
+    reply.musicianId = this.props.musicianId;
+    reply.bandId = this.props.bandId;
+    reply.postingId = this.props.postingId;
+    reply.closed = false;
+    formSubmit(reply);
     this.setState({ newReply: defaultReply });
   }
 
@@ -80,7 +83,7 @@ class AddPostingReplyModal extends React.Component {
           <ModalFooter>
           <Button className="btn-danger" onClick={(e) => {
             this.toggle();
-            this.formSubmit();
+            this.onSubmit();
             e.preventDefault();
           }}>Save</Button>{' '}
             <Button className="btn-grey" onClick={this.toggle}>Cancel</Button>

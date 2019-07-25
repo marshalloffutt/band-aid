@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import {
   Card,
-  Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import AddPostingReplyModal from '../../../Modals/AddPostingReplyModal';
 import roleTranslator from '../../../../helpers/roleTranslator';
 
 import './PostingItem.scss';
 
 export default class PostingItem extends Component {
   render() {
-    const { posting } = this.props;
+    const { posting, musicianId } = this.props;
     const id = posting.BandId;
 
     return (
@@ -22,7 +22,13 @@ export default class PostingItem extends Component {
           <hr></hr>
           <p className="card-text">{posting.Genre}</p>
           <p className="card-text">{posting.Description}</p>
-          <Button className="btn-danger">Reply</Button>
+          <AddPostingReplyModal
+                buttonLabel='Reply'
+                className="btn-danger"
+                postingId = {posting.Id}
+                musicianId = {musicianId}
+                // onSubmit={this.formSubmitEvent}
+            />
         </div>
       </Card>
     );

@@ -21,6 +21,24 @@ body {
   }
 }
 
+.btn-grey {
+  border-radius: 40px !important;
+  background-color: $white-darkest;
+  border-color: $white-darkest;
+  &:hover {
+    background-color: $white-darker;
+  }
+}
+
+.btn-blue {
+  border-radius: 40px !important;
+  background-color: $blue;
+  border-color: $blue;
+  &:hover {
+    background-color: $blue-lighter;
+  }
+}
+
 .btn-outline-danger {
   border-radius: 40px !important;
   border-color: $red;

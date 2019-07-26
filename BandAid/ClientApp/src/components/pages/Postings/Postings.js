@@ -19,7 +19,7 @@ export default class Postings extends Component {
     allPostings: [],
     postings: [],
     filteredPostings: [],
-    currentUser: {},
+    currentUser: [],
   }
 
   componentDidMount() {

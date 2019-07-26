@@ -18,10 +18,22 @@ import './BandPage.scss';
 export default class BandPage extends Component {
   state = {
     bandId: this.props.location.state.id,
+    currentUser: this.props.currentUser,
+    userInBand: false,
     currentBand: {},
     musicians: [],
     shindigs: [],
     postings: [],
+  }
+
+  rosterCheck = () => {
+    const userId = this.state.currentUser.id;
+    const rosterArray = this.state.currentBand.musicians;
+    rosterArray.forEach((musician) => {
+      if (musician.id === userId) {
+        this.setState({ userInBand: true });
+      }
+    });
   }
 
   componentDidMount() {
@@ -31,6 +43,7 @@ export default class BandPage extends Component {
         this.setState({ musicians: band.musicians });
         this.setState({ shindigs: band.shindigs });
         this.setState({ postings: band.postings });
+        this.rosterCheck();
       })
       .catch((error) => {
         console.error(error);
@@ -53,6 +66,8 @@ export default class BandPage extends Component {
       musicians,
       postings,
       shindigs,
+      userInBand,
+      currentUser,
     } = this.state;
 
     const musicianComponents = musicians.map(musician => (
@@ -66,6 +81,9 @@ export default class BandPage extends Component {
       <PostingListItem
         posting={posting}
         key={posting.id}
+        currentBand={currentBand}
+        currentUser={currentUser}
+        userInBand={userInBand}
       />
     ));
 

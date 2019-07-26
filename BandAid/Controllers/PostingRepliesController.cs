@@ -66,5 +66,13 @@ namespace BandAid.Controllers
             return Ok(closedPostingReply);
         }
 
+        [HttpGet("postings/{postingId}")]
+        public ActionResult getRepliesForPost(int postingId)
+        {
+            var replies = _postingReplyRepository.GetRepliesForPosting(postingId);
+
+            return Ok(replies);
+        }
+
     }
 }

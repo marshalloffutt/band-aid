@@ -276,7 +276,7 @@ INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreate
 VALUES ('Of Men and Koalas', 'Country', 'A bad Merle-Haggard cover band.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/of-men-and-koalas.PNG?raw=true', '2019-07-16', 0, 'Nashville', 'Tennessee')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
-VALUES ('Van Gogh''s Ear', 'Rock', 'Less a band and more an esoteric think-tank, Van Gogh’’s Ear can only be defined as complex algorithms set to the rhythm of jazz and post-rock.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/van-goghs-ear.png?raw=true', '2019-07-16', 0, 'Nashville', 'Tennessee')
+VALUES ('Van Gogh''s Ear', 'Rock', 'Less a band and more an esoteric think-tank, VGE can only be defined as complex algorithms set to the rhythm of jazz and post-rock.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/van-goghs-ear.png?raw=true', '2019-07-16', 0, 'Nashville', 'Tennessee')
 
 INSERT INTO [dbo].[Band] ([Name], [Genre], [Description], [LogoUrl], [DateCreated], [Inactive], [City], [State])
 VALUES ('Rosie and the Doctors', 'Jazz', 'Lose your mind to the soundscape of RND.', 'https://github.com/marshalloffutt/band-aid/blob/master/BandAid/images/rosie-and-the-doctors.PNG?raw=true', '2019-07-16', 0, 'Chicago', 'Illinois')

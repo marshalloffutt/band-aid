@@ -67,6 +67,7 @@ export default class BandPage extends Component {
       postings,
       shindigs,
       userInBand,
+      currentUser,
     } = this.state;
 
     const musicianComponents = musicians.map(musician => (
@@ -80,6 +81,8 @@ export default class BandPage extends Component {
       <PostingListItem
         posting={posting}
         key={posting.id}
+        currentBand={currentBand}
+        currentUser={currentUser}
         userInBand={userInBand}
       />
     ));

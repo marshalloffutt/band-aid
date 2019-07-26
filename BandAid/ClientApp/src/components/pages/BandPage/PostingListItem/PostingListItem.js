@@ -3,7 +3,7 @@ import roleTranslator from '../../../../helpers/roleTranslator';
 
 export default class PostingListItem extends Component {
   render() {
-    const { posting } = this.props;
+    const { posting, userInBand } = this.props;
 
     return (
       <div className="mb-3">

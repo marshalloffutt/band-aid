@@ -121,5 +121,26 @@ namespace BandAid.Data
                 else throw new Exception("Could not close posting reply");
             }
         }
+
+        public IEnumerable<Object> GetRepliesForPosting(int postingId)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var postingReplies =db.Query<Object>(@"
+                    Select u.firstname, u.lastname, u.Instrument, u.YearsOfExp, pr.message,
+                            pr.DateCreated, b.id as BandId, b.name, p.id as PostingId
+                    From posting p
+                    Join band b on b.id = p.bandid
+                    Join postingreply pr on pr.PostingId = p.id
+                    Join [user] u on u.id = pr.musicianId
+                    Where pr.closed = 0
+                    And p.id = @postingId",
+                    new { postingId });
+
+                return postingReplies.ToList();
+            }
+
+            throw new Exception("Could not get posting replies for posting");
+        }
     }
 }

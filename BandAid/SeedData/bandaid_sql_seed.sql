@@ -153,6 +153,7 @@ CREATE TABLE [dbo].[User](
 	[Instrument] [varchar](50) NOT NULL,
 	[YearsOfExp] [int] NULL,
 	[ImageUrl] [varchar](200) NULL,
+	[Bio] [varchar](500) NULL,
 	[Inactive] [bit] NOT NULL,
  CONSTRAINT [PK_Musician] PRIMARY KEY CLUSTERED
 (
@@ -195,80 +196,80 @@ GO
 USE [BandAid]
 -- User Seed Data
 -- Nashville-based musicians 1-7
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Austin','Cumberlander','austin@cumberlander.com','2019-07-16', 6156453322, '3300 Broadmeade Ct', 'Nashville', 'Tennessee', 37201, 'Bass', 12, 'https://avatars2.githubusercontent.com/u/24642982?s=460&v=4', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Austin','Cumberlander','austin@cumberlander.com','2019-07-16', 6156453322, '3300 Broadmeade Ct', 'Nashville', 'Tennessee', 37201, 'Bass', 12, 'https://avatars2.githubusercontent.com/u/24642982?s=460&v=4', 'I like anime.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Colin','White','colin@white.com','2019-07-16', 2813323372, '2451 Bellaire Dr', 'Nashville', 'Tennessee', 37201, 'Drums', 11, 'https://media.licdn.com/dms/image/C5603AQEfbnZSDdRYyA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=65IUVetFQq0AmwMsofd8rd1Hw0Ua8Nvvm169WYGhXqM', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Colin','White','colin@white.com','2019-07-16', 2813323372, '2451 Bellaire Dr', 'Nashville', 'Tennessee', 37201, 'Drums', 11, 'https://media.licdn.com/dms/image/C5603AQEfbnZSDdRYyA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=65IUVetFQq0AmwMsofd8rd1Hw0Ua8Nvvm169WYGhXqM', 'Jazz is stupid.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Feven','Mulugeta','feven@mulugeta.com','2019-07-16', 5679345633, '2101 Montgomery Blvd', 'Nashville', 'Tennessee', 37201, 'French Horn', 20, 'https://media.licdn.com/dms/image/C4D03AQE2683agbx1yg/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=JscxjM0b2iSWoJ8eC2BHGLt8HgI2nKUoRroo0U_QvQQ', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Feven','Mulugeta','feven@mulugeta.com','2019-07-16', 5679345633, '2101 Montgomery Blvd', 'Nashville', 'Tennessee', 37201, 'French Horn', 20, 'https://media.licdn.com/dms/image/C4D03AQE2683agbx1yg/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=JscxjM0b2iSWoJ8eC2BHGLt8HgI2nKUoRroo0U_QvQQ', 'I like penguins.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Martin','Cross','martin@cross.com','2019-07-16', 3354778965, '121 Rushmore Cir', 'Nashville', 'Tennessee', 37201, 'Xylophone', 18, 'https://media.licdn.com/dms/image/C4E03AQHHJdLII0g_uA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=BLeOm3CcIRcqWaGOSJNJtioW95QYTvshMDexxx32gBU', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Martin','Cross','martin@cross.com','2019-07-16', 3354778965, '121 Rushmore Cir', 'Nashville', 'Tennessee', 37201, 'Xylophone', 18, 'https://media.licdn.com/dms/image/C4E03AQHHJdLII0g_uA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=BLeOm3CcIRcqWaGOSJNJtioW95QYTvshMDexxx32gBU', 'I used to be in the circus.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Robert','Rice','rob@rice.com','2019-07-16', 6687651122, '5644 Console Logs Dr', 'Nashville', 'Tennessee', 37201, 'Drums', 7, 'https://media.licdn.com/dms/image/C4E03AQHM9Re92aFXIQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=xHB_0wM87nCJoguLWgX-Jutzp_E0vv8fGiAXJ36XMBE', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Robert','Rice','rob@rice.com','2019-07-16', 6687651122, '5644 Console Logs Dr', 'Nashville', 'Tennessee', 37201, 'Drums', 7, 'https://media.licdn.com/dms/image/C4E03AQHM9Re92aFXIQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=xHB_0wM87nCJoguLWgX-Jutzp_E0vv8fGiAXJ36XMBE', 'Bananas are delicious.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Adam','Wieckert','adam@wieckert.com','2019-07-16', 6573345689, '1245 Kings Cross Ave', 'Nashville', 'Tennessee', 37201, 'Violin', 11, 'https://media.licdn.com/dms/image/C4D03AQH6UCibZYVNuw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=mK-a53GwJDDvoKv_6dKEdG43-L-R9quyTJGhEtBP61M', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Adam','Wieckert','adam@wieckert.com','2019-07-16', 6573345689, '1245 Kings Cross Ave', 'Nashville', 'Tennessee', 37201, 'Violin', 11, 'https://media.licdn.com/dms/image/C4D03AQH6UCibZYVNuw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=mK-a53GwJDDvoKv_6dKEdG43-L-R9quyTJGhEtBP61M', 'I never learned how to swim.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Dylan','Murray','dylan@murray.com','2019-07-16', 3556768932, '310 Terry Blvd', 'Nashville', 'Tennessee', 37201, 'Harmonica', 16, 'https://media.licdn.com/dms/image/C4D03AQH4J7B2zSV1HQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=D9CkcsRbJU290o1MelxW0tXoP03GJ8sVOg_m72vs67w', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Dylan','Murray','dylan@murray.com','2019-07-16', 3556768932, '310 Terry Blvd', 'Nashville', 'Tennessee', 37201, 'Harmonica', 16, 'https://media.licdn.com/dms/image/C4D03AQH4J7B2zSV1HQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=D9CkcsRbJU290o1MelxW0tXoP03GJ8sVOg_m72vs67w', 'I hate long walks on the beach', 0)
 
 -- Houston-based musicians 8-14
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Chase','Hamby','chase@hamby.com','2019-07-16', 6156323372, '301 Torrance Dr', 'Houston', 'Texas', 37201, 'Lead Guitar', 7, 'https://avatars1.githubusercontent.com/u/16019344?s=460&v=4', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Chase','Hamby','chase@hamby.com','2019-07-16', 6156323372, '301 Torrance Dr', 'Houston', 'Texas', 37201, 'Lead Guitar', 7, 'https://avatars1.githubusercontent.com/u/16019344?s=460&v=4', 'I like to go on hikes.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Jasmine','Walters','jasmine@walters.com','2019-07-16', 6674435612, '4700 Wesleyan Dr', 'Houston', 'Texas', 37201, 'Trombone', 8, 'https://media.licdn.com/dms/image/C5603AQEgS_0mFk3GHQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=2qK2B8C88ritFNUrzaooLcfkd_vdC6jHoV6kwVYgbt4', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Jasmine','Walters','jasmine@walters.com','2019-07-16', 6674435612, '4700 Wesleyan Dr', 'Houston', 'Texas', 37201, 'Trombone', 8, 'https://media.licdn.com/dms/image/C5603AQEgS_0mFk3GHQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=2qK2B8C88ritFNUrzaooLcfkd_vdC6jHoV6kwVYgbt4', 'My favorite food is pizza.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Marco','Crank','marco@crank.com','2019-07-16', 6537383448, '2663 Dungeons & Dragons Blvd', 'Houston', 'Texas', 37201, 'Bass', 9, 'https://media.licdn.com/dms/image/C4E03AQHiLw-gHtp_Pg/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=VvxcJpeTK-yKQbZ9jrBIuSN1tQ9kGWMgXuFnK2aDKtQ', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Marco','Crank','marco@crank.com','2019-07-16', 6537383448, '2663 Dungeons & Dragons Blvd', 'Houston', 'Texas', 37201, 'Bass', 9, 'https://media.licdn.com/dms/image/C4E03AQHiLw-gHtp_Pg/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=VvxcJpeTK-yKQbZ9jrBIuSN1tQ9kGWMgXuFnK2aDKtQ', 'I like sandwiches.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Mary','Rys','mary@rys.com','2019-07-16', 2556998765, '936 Barry Allen Dr', 'Houston', 'Texas', 37201, 'Vocals', 22, 'https://media.licdn.com/dms/image/C4D03AQERoAANk53kmA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=QvFkV5qVZkBzf0EPlGh9HCkFh2kB15Lz4UgVu-UEGKo', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Mary','Rys','mary@rys.com','2019-07-16', 2556998765, '936 Barry Allen Dr', 'Houston', 'Texas', 37201, 'Vocals', 22, 'https://media.licdn.com/dms/image/C4D03AQERoAANk53kmA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=QvFkV5qVZkBzf0EPlGh9HCkFh2kB15Lz4UgVu-UEGKo', 'I am a minimalist.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Michelle','Beshears','michelle@beshears.com','2019-07-16', 5543768967, '6679 Franklintonshire Ct', 'Houston', 'Texas', 37201, 'Alto Saxophone', 12, 'https://media.licdn.com/dms/image/C5603AQFSYuRdM9Mi5A/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=irzPc1nV7XTDH7ZS13n3ykf33d5bSR9Pxlo9Ex4ynVk', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Michelle','Beshears','michelle@beshears.com','2019-07-16', 5543768967, '6679 Franklintonshire Ct', 'Houston', 'Texas', 37201, 'Alto Saxophone', 12, 'https://media.licdn.com/dms/image/C5603AQFSYuRdM9Mi5A/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=irzPc1nV7XTDH7ZS13n3ykf33d5bSR9Pxlo9Ex4ynVk', 'I don''t own a tv.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Shane','Wilson','shane@wilson.com','2019-07-16', 6295564323, '2112 Canada Dr', 'Houston', 'Texas', 37201, 'Keytar', 2, 'https://media.licdn.com/dms/image/C4E03AQFRhH9cF3zuEA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=fl0Q_66X3uR2R5zuAI4CTK0Yp10h3QoXgCZevJD3i7w', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Shane','Wilson','shane@wilson.com','2019-07-16', 6295564323, '2112 Canada Dr', 'Houston', 'Texas', 37201, 'Keytar', 2, 'https://media.licdn.com/dms/image/C4E03AQFRhH9cF3zuEA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=fl0Q_66X3uR2R5zuAI4CTK0Yp10h3QoXgCZevJD3i7w', 'I have an ant farm.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Rich','Fisher','richard@fish.com','2019-07-16', 5637789987, '2109 Fishman Ct', 'Houston', 'Texas', 37201, 'Guitar', 12, 'https://avatars0.githubusercontent.com/u/42363523?s=460&v=4', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Rich','Fisher','richard@fish.com','2019-07-16', 5637789987, '2109 Fishman Ct', 'Houston', 'Texas', 37201, 'Guitar', 12, 'https://avatars0.githubusercontent.com/u/42363523?s=460&v=4', 'I had chinese food this morning.', 0)
 
 -- Chicago-based musicians 15-18
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Jonathan','Mohan','jon@mohan.com','2019-07-16', 7653345534, '455 Toronto Blvd', 'Chicago', 'Illinois', 37201, 'Vocals', 33, 'https://media.licdn.com/dms/image/C4E03AQETX6swKcW6TQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=YE6vo5P52rGrnoXSkVsZCAJ5kFdIkqWg4nMDEkkNLKY', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Jonathan','Mohan','jon@mohan.com','2019-07-16', 7653345534, '455 Toronto Blvd', 'Chicago', 'Illinois', 37201, 'Vocals', 33, 'https://media.licdn.com/dms/image/C4E03AQETX6swKcW6TQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=YE6vo5P52rGrnoXSkVsZCAJ5kFdIkqWg4nMDEkkNLKY', 'I''m not sick, but I''m not well', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Maggie','Leavell','maggie@leavell.com','2019-07-16', 7764483336, '7854 Falcon Ct', 'Chicago', 'Illinois', 37201, 'Drums', 16, 'https://media.licdn.com/dms/image/C4E03AQFDgRxxwJfCSw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=3T1i7NMIpw2FJ1n0o4VrEl5qUL-hw9EufhkdbuA0Nv0', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Maggie','Leavell','maggie@leavell.com','2019-07-16', 7764483336, '7854 Falcon Ct', 'Chicago', 'Illinois', 37201, 'Drums', 16, 'https://media.licdn.com/dms/image/C4E03AQFDgRxxwJfCSw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=3T1i7NMIpw2FJ1n0o4VrEl5qUL-hw9EufhkdbuA0Nv0', 'My favorite band is Dishwalla.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State],[Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Wayne','Collier','wayne@collier.com','2019-07-16', 9865536688, '310 Temple Ave', 'Chicago', 'Illinois', 37201, 'Trumpet', 25, 'https://media.licdn.com/dms/image/C4D03AQFyGJP7G92jNw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=5WvgpOg4b7PSZwDjmQIGW5vsVK9_I4voFC5cO7yiGWY', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State],[Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Wayne','Collier','wayne@collier.com','2019-07-16', 9865536688, '310 Temple Ave', 'Chicago', 'Illinois', 37201, 'Trumpet', 25, 'https://media.licdn.com/dms/image/C4D03AQFyGJP7G92jNw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=5WvgpOg4b7PSZwDjmQIGW5vsVK9_I4voFC5cO7yiGWY', 'I own the speedrun record for Super Mario Bros 3.',  0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Nathan','Gonzalez','nate@gonzo.com','2019-07-16', 6447896689, '1005 CopyPasta Dr', 'Chicago', 'Illinois', 37201, 'Keyboard', 11, 'https://media.licdn.com/dms/image/C5603AQHXNsWNdxY38Q/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=Xjh2p6Qoob26bKy09iFgqy45yVsS3v7Bot_okRzrDBI', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Nathan','Gonzalez','nate@gonzo.com','2019-07-16', 6447896689, '1005 CopyPasta Dr', 'Chicago', 'Illinois', 37201, 'Keyboard', 11, 'https://media.licdn.com/dms/image/C5603AQHXNsWNdxY38Q/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=Xjh2p6Qoob26bKy09iFgqy45yVsS3v7Bot_okRzrDBI', 'I have three cats.', 0)
 
 -- Los Angeles-based musicians 19-22
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Lance','Hamilton','lance@hamilton.com','2019-07-16', 2254476699, '487 Jenkins Dr', 'Los Angeles', 'California', 37201, 'Vocals', 28, 'https://media.licdn.com/dms/image/C4E03AQGufg_54fDDAg/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=-dGbi60hTB_jXjDS5BOfOQRDaLFYsVirH5oF5lNzE10', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Lance','Hamilton','lance@hamilton.com','2019-07-16', 2254476699, '487 Jenkins Dr', 'Los Angeles', 'California', 37201, 'Vocals', 28, 'https://media.licdn.com/dms/image/C4E03AQGufg_54fDDAg/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=-dGbi60hTB_jXjDS5BOfOQRDaLFYsVirH5oF5lNzE10', 'I own many leatherbound books', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Ripal','Patel','ripal@patel.com','2019-07-16', 3557789876, '56 Count Dracula Blvd', 'Los Angeles', 'California', 37201, 'Flute', 16, 'https://media.licdn.com/dms/image/C4E03AQFCm0GyqYbNjw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=jSvbMGGwZRQqNWjg7vftYiaW3pxckMUW517w4EHVAMs', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Ripal','Patel','ripal@patel.com','2019-07-16', 3557789876, '56 Count Dracula Blvd', 'Los Angeles', 'California', 37201, 'Flute', 16, 'https://media.licdn.com/dms/image/C4E03AQFCm0GyqYbNjw/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=jSvbMGGwZRQqNWjg7vftYiaW3pxckMUW517w4EHVAMs', 'I HATE people who hate charades!', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Tim','Harley','timmy@harley.com','2019-07-16', 7786546654, '36 Ackerman Blvd', 'Los Angeles', 'California', 37201, 'Alto Saxophone', 22, 'https://media.licdn.com/dms/image/C5603AQEtPZARH6E9wA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=pzQKS61usdyyrG-UuY1ekWo2iQEKQ7hxb3ye4giJws8', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Tim','Harley','timmy@harley.com','2019-07-16', 7786546654, '36 Ackerman Blvd', 'Los Angeles', 'California', 37201, 'Alto Saxophone', 22, 'https://media.licdn.com/dms/image/C5603AQEtPZARH6E9wA/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=pzQKS61usdyyrG-UuY1ekWo2iQEKQ7hxb3ye4giJws8', 'I HATE charades!', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Mohammad','Khezri','mo@kez-man.com','2019-07-16', 7683376678, '455 Titans Way', 'Los Angeles', 'California', 37201, 'Harpischord', 11, 'https://media.licdn.com/dms/image/C4E03AQGbZbYsKA8QrQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=qvdUbiI5w7cVP6hlWblSCCifQ8ibbdpkz34IHvVxqMk', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Mohammad','Khezri','mo@kez-man.com','2019-07-16', 7683376678, '455 Titans Way', 'Los Angeles', 'California', 37201, 'Harpischord', 11, 'https://media.licdn.com/dms/image/C4E03AQGbZbYsKA8QrQ/profile-displayphoto-shrink_800_800/0?e=1568851200&v=beta&t=qvdUbiI5w7cVP6hlWblSCCifQ8ibbdpkz34IHvVxqMk', 'I like people.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Marshall','Offutt','marshalloffutt@gmail.com','2019-07-16', 6293335835, '4709 Danby Dr', 'Nashville', 'Tennessee', 37211, 'Guitar', 12, 'https://avatars2.githubusercontent.com/u/40044635?s=460&v=4', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Marshall','Offutt','marshalloffutt@gmail.com','2019-07-16', 6293335835, '4709 Danby Dr', 'Nashville', 'Tennessee', 37211, 'Guitar', 12, 'https://avatars2.githubusercontent.com/u/40044635?s=460&v=4', 'I once ate a cockroach.', 0)
 
-INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Inactive])
-VALUES ('Charles','Woodring','chuckwoody@gmail.com','2019-07-16', 54865848, '2101 Nashville School', 'Nashville', 'Tennessee', 32344, 'Bass', 11, 'https://avatars2.githubusercontent.com/u/41008544?s=460&v=4', 0)
+INSERT INTO [dbo].[User] ([FirstName], [LastName], [Email], [DateCreated], [Phone], [Address], [City], [State], [Zipcode], [Instrument], [YearsOfExp], [ImageUrl], [Bio], [Inactive])
+VALUES ('Charles','Woodring','chuckwoody@gmail.com','2019-07-16', 54865848, '2101 Nashville School', 'Nashville', 'Tennessee', 32344, 'Bass', 11, 'https://avatars2.githubusercontent.com/u/41008544?s=460&v=4', 'I''m Charles! I''m really good.', 0)
 
 
 -- Band Seed Data

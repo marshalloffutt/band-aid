@@ -1,0 +1,12 @@
+@import '../../../styles/variables';
+
+.musician-jumbotron {
+  background-color: $blue;
+  border-radius: 0;
+}
+
+.musician-photo {
+  border-radius: 50%;
+  max-height: 200px;
+  border: 2px solid $gold;
+}

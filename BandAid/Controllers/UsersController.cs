@@ -61,6 +61,7 @@ namespace BandAid.Controllers
                 createRequest.Instrument,
                 createRequest.YearsOfExp,
                 createRequest.ImageUrl,
+                createRequest.Bio,
                 createRequest.Inactive);
 
             return Created($"api/user/{newUser.Id}", newUser);

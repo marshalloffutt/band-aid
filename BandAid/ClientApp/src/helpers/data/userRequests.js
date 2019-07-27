@@ -56,10 +56,16 @@ const getUserIdByEmail = () => new Promise((resolve, reject) => {
     });
 });
 
+const updateUser = (user, id) => axios.put(`${bandAidApiBaseUrl}/users/update/${id}`, user);
+
+const deactivateUser = (user, id) => axios.put(`${bandAidApiBaseUrl}/users/deactivate/${id}`, user);
+
 export default {
   createUser,
   getUserById,
   getUserIdByEmail,
   getAllUsers,
   getUser,
+  updateUser,
+  deactivateUser,
 };

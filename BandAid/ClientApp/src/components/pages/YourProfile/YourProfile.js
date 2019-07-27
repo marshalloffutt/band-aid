@@ -6,11 +6,52 @@ import {
   Button,
 } from 'reactstrap';
 
+import authRequests from '../../../helpers/data/authRequests';
+import userRequests from '../../../helpers/data/userRequests';
+import EditProfileModal from '../../Modals/EditProfileModal';
+
 import './YourProfile.scss';
 
 export default class YourProfile extends Component {
+  state = {
+    userId: 0,
+    currentUser: this.props.currentUser,
+  }
+
+  componentDidMount() {
+    this.setState({ userId: this.state.currentUser.id });
+  }
+
+  getCurrentUser = (userId) => {
+    userRequests.getUser()
+      .then((currentUser) => {
+        this.setState({ currentUser });
+      }).catch((error) => {
+        console.error(error);
+      });
+  }
+
+  formSubmitEvent = (newUser, userId) => {
+    userRequests.updateUser(newUser, userId)
+      .then(() => {
+        this.getCurrentUser(this.state.userId);
+      });
+  }
+
+  deactivateUserEvent = (e) => {
+    const user = this.state.currentUser;
+    const userId = user.id;
+    userRequests.deactivateUser(user, userId)
+      .then(() => {
+        authRequests.logoutUser();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   render() {
-    const { currentUser } = this.props;
+    const { currentUser } = this.state;
 
     return (
     <Container>
@@ -22,7 +63,14 @@ export default class YourProfile extends Component {
               <img className="user-photo" src={currentUser.imageUrl} alt="yourUglyMug" />
             </Row>
             <Row className="mt-4">
-              <Button>Edit Profile</Button>
+              <EditProfileModal
+                buttonLabel="Edit Profile"
+                currentUser={currentUser}
+                onSubmit={this.formSubmitEvent}
+              />
+            </Row>
+            <Row>
+              <Button outline color="danger" onClick={this.deactivateUserEvent}>Deactivate Account</Button>
             </Row>
           </Col>
           <Col md={5}>
@@ -82,6 +130,16 @@ export default class YourProfile extends Component {
               </Col>
               <Col>
                 <p className="text-left"> {currentUser.yearsOfExp}</p>
+              </Col>
+            </Row>
+            <Row className="mt-4">
+              <Col>
+                <h4 className="text-left">Bio:</h4>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p className="text-left"> {currentUser.bio}</p>
               </Col>
             </Row>
           </Col>

@@ -4,7 +4,6 @@ import {
   Row,
   Jumbotron,
   Container,
-  Table,
 } from 'reactstrap';
 
 import userRequests from '../../../helpers/data/userRequests';

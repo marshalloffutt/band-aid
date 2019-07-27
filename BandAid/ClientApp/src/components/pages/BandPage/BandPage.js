@@ -5,6 +5,7 @@ import {
   Jumbotron,
   Container,
   Table,
+  Button,
 } from 'reactstrap';
 
 import MusicianListItem from './MusicianListItem/MusicianListItem';
@@ -23,6 +24,7 @@ export default class BandPage extends Component {
     musicians: [],
     shindigs: [],
     postings: [],
+    userInTheBand: false,
   }
 
   componentDidMount() {
@@ -32,6 +34,15 @@ export default class BandPage extends Component {
         this.setState({ musicians: band.musicians });
         this.setState({ shindigs: band.shindigs });
         this.setState({ postings: band.postings });
+      })
+      .then(() => {
+        const userId = this.props.currentUser.id;
+        const rosterArray = this.state.currentBand.musicians;
+        rosterArray.forEach((musician) => {
+          if (musician.id === userId) {
+            this.setState({ userInTheBand: true });
+          }
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -55,6 +66,7 @@ export default class BandPage extends Component {
       postings,
       shindigs,
       currentUser,
+      userInTheBand,
     } = this.state;
 
     const musicianComponents = musicians.map(musician => (
@@ -80,6 +92,14 @@ export default class BandPage extends Component {
       />
     ));
 
+    const makeAddPostingButton = () => {
+      if (userInTheBand) {
+        return (
+          <Button outline color="danger" className="mb-4">Create a Posting</Button>
+        );
+      } return '';
+    };
+
     return (
       <div className="band-page">
         <Jumbotron className="band-jumbotron">
@@ -98,7 +118,7 @@ export default class BandPage extends Component {
               {musicianComponents}
             </Col>
           </Row>
-          <Row className="mb-4">
+          <Row className="mb-4 mt-4">
             <Col md={6}>
             <h3 className="red">Upcoming Events</h3>
             <Table className="white">
@@ -117,6 +137,7 @@ export default class BandPage extends Component {
             </Col>
             <Col md={6}>
               <h3 className="red">Postings</h3>
+              {makeAddPostingButton()}
               {postingComponents}
             </Col>
           </Row>

@@ -41,7 +41,7 @@ export default class Bands extends Component {
     return (
       <div>
         <h1 className="title is-1 mt-5 red mb-4">Bands</h1>
-        <div class="d-flex flex-wrap justify-content-around">
+        <div className="d-flex flex-wrap justify-content-around">
           {bandComponents}
         </div>
       </div>

@@ -10,7 +10,7 @@ export default class BandListItem extends Component {
         <Link to={{ pathname: `/bands/${band.id}`, state: { id: `${band.id}` } }}>
           <img
             id={band.id}
-            class="band-logo-card"
+            className="band-logo-card"
             src={band.logoUrl}
             alt={band.name}
           />

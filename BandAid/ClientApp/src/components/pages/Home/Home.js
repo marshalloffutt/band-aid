@@ -75,10 +75,10 @@ class Home extends React.Component {
         return (
           <div>
             <div className="mt-4">
-              <Button color="danger" size="large" rounded onClick={this.goToPostings}>Find Your Next Band!</Button>
+              <Button color="danger" size="large" onClick={this.goToPostings}>Find Your Next Band!</Button>
             </div>
             <div className="mt-4">
-              <Button color="danger" size="large" rounded onClick={this.goToBand}>Start a Band</Button>
+              <Button color="danger" size="large" onClick={this.goToBand}>Start a Band</Button>
             </div>
           </div>
         );
@@ -90,10 +90,10 @@ class Home extends React.Component {
           <p className="text-white">Here are your upcoming shindigs:</p>
           {userShindigComponents}
           <div className="mt-4">
-              <Button color="danger" size="large" rounded onClick={this.goToPostings}>Find Your Next Band!</Button>
+              <Button color="danger" size="large" onClick={this.goToPostings}>Find Your Next Band!</Button>
             </div>
             <div className="mt-4">
-              <Button color="danger" size="large" rounded onClick={this.goToBand}>Start a Band</Button>
+              <Button color="danger" size="large" onClick={this.goToBand}>Start a Band</Button>
             </div>
         </div>
       );

@@ -3,6 +3,8 @@ import apiKeys from '../apiKeys';
 
 const bandAidApiBaseUrl = apiKeys.bandAidApi.apiBaseUrl;
 
+const createPosting = posting => axios.post(`${bandAidApiBaseUrl}/postings/register`, posting);
+
 const getAll = () => new Promise((resolve, reject) => {
   axios.get(`${bandAidApiBaseUrl}/postings/open`)
     .then((result) => {
@@ -16,4 +18,4 @@ const getAll = () => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAll };
+export default { getAll, createPosting };

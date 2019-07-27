@@ -50,8 +50,6 @@ class AddPostingModal extends React.Component {
   onSubmit = (e) => {
     const { formSubmit } = this.props;
     const posting = { ...this.state.newPosting };
-    posting.dateCreated = new Date();
-    posting.musicianId = this.props.musicianId;
     posting.bandId = this.props.bandId;
     posting.postingId = this.props.postingId;
     posting.closed = false;

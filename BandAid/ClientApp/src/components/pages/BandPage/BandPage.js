@@ -67,6 +67,7 @@ export default class BandPage extends Component {
       shindigs,
       currentUser,
       userInTheBand,
+      bandId,
     } = this.state;
 
     const musicianComponents = musicians.map(musician => (
@@ -95,7 +96,7 @@ export default class BandPage extends Component {
     const makeAddPostingButton = () => {
       if (userInTheBand) {
         return (
-          <Button outline color="danger" className="mb-4">Create a Posting</Button>
+          <Button outline color="danger" className="mb-4" bandId={bandId}>Create a Posting</Button>
         );
       } return '';
     };

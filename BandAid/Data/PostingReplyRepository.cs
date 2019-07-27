@@ -128,7 +128,7 @@ namespace BandAid.Data
             {
                 var postingReplies =db.Query<Object>(@"
                     Select pr.id, u.firstname, u.lastname, u.Instrument, u.YearsOfExp, pr.message,
-                            pr.DateCreated, b.id as BandId, b.name, p.id as PostingId
+                            pr.DateCreated, b.id as BandId, b.name, p.id as PostingId, u.id as UserId
                     From posting p
                     Join band b on b.id = p.bandid
                     Join postingreply pr on pr.PostingId = p.id

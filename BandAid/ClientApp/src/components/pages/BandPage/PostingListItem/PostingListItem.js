@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import postingReplyRequests from '../../../../helpers/data/postingReplyRequests';
 import ReplyListItem from '../ReplyListItem/ReplyListItem';
 import roleTranslator from '../../../../helpers/roleTranslator';
@@ -7,6 +8,7 @@ export default class PostingListItem extends Component {
   state = {
     posting: this.props.posting,
     replies: [],
+    userInBand: false,
   }
 
   rosterCheck = () => {
@@ -18,6 +20,7 @@ export default class PostingListItem extends Component {
         postingReplyRequests.getRepliesOnPosting(postingId)
           .then((replies) => {
             this.setState({ replies });
+            this.setState({ userInBand: true });
           })
           .catch((error) => {
             console.error(error);
@@ -28,6 +31,12 @@ export default class PostingListItem extends Component {
 
   componentDidMount() {
     this.rosterCheck();
+  }
+
+  makeEditButton = () => {
+    if (this.state.userInBand) {
+      return <Button>Edit</Button>;
+    } return '';
   }
 
   render() {
@@ -53,6 +62,7 @@ export default class PostingListItem extends Component {
             <ul>
               {replyComponents}
             </ul>
+            {this.makeEditButton()}
           </div>
         </div>
       </div>

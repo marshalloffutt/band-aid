@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import postingReplyRequests from '../../../../helpers/data/postingReplyRequests';
 import ReplyListItem from '../ReplyListItem/ReplyListItem';
 import roleTranslator from '../../../../helpers/roleTranslator';
@@ -6,7 +7,9 @@ import roleTranslator from '../../../../helpers/roleTranslator';
 export default class PostingListItem extends Component {
   state = {
     posting: this.props.posting,
+    postingId: this.props.posting.id,
     replies: [],
+    userInBand: false,
   }
 
   rosterCheck = () => {
@@ -18,6 +21,7 @@ export default class PostingListItem extends Component {
         postingReplyRequests.getRepliesOnPosting(postingId)
           .then((replies) => {
             this.setState({ replies });
+            this.setState({ userInBand: true });
           })
           .catch((error) => {
             console.error(error);
@@ -31,8 +35,24 @@ export default class PostingListItem extends Component {
   }
 
   render() {
-    const { posting } = this.props;
+    const { posting, deletePosting } = this.props;
     const { replies } = this.state;
+
+    const deleteEvent = () => {
+      const postingId = posting.id;
+      deletePosting(postingId);
+    };
+
+    const makeEditButtons = () => {
+      if (this.state.userInBand) {
+        return (
+        <div>
+          <Button color="danger">Edit Posting</Button>
+          <Button color="danger" onClick={deleteEvent}>Delete Posting</Button>
+        </div>
+        );
+      } return '';
+    };
 
     const replyComponents = replies.map(reply => (
       <ReplyListItem
@@ -53,6 +73,7 @@ export default class PostingListItem extends Component {
             <ul>
               {replyComponents}
             </ul>
+              {makeEditButtons()}
           </div>
         </div>
       </div>

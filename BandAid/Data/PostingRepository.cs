@@ -124,6 +124,27 @@ namespace BandAid.Data
             }
         }
 
+        public Posting Close(Posting postingToClose)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var updateQuery = @"
+                        Update [dbo].[Posting]
+                            Set closed = 1,
+                        Where id = @id";
+
+                var rowsAffected = db.Execute(updateQuery, postingToClose);
+
+                if (rowsAffected == 1)
+                {
+                    return postingToClose;
+                }
+
+                else throw new Exception("Could not close posting");
+            }
+        }
+
+
         public Posting DeletePosting(int postingId)
         {
             using (var db = new SqlConnection(_connectionString))

@@ -67,6 +67,14 @@ namespace BandAid.Controllers
             return Ok(updatedPosting);
         }
 
+        [HttpPut("close/{id}")]
+        public ActionResult close(Posting posting)
+        {
+            var closedPosting = _postingRepository.Update(posting);
+
+            return Ok(closedPosting);
+        }
+
         [HttpDelete("delete/{postingId}")]
         public ActionResult delete(int postingId)
         {

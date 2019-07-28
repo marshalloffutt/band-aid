@@ -71,6 +71,13 @@ export default class BandPage extends Component {
       });
   }
 
+  deletePosting = (postingId) => {
+    postingRequests.deletePosting(postingId)
+      .then(() => {
+        this.getAllBandInfo();
+      });
+  }
+
   render() {
     const {
       currentBand,
@@ -93,6 +100,7 @@ export default class BandPage extends Component {
       <PostingListItem
         posting={posting}
         key={posting.id}
+        deletePosting={this.deletePosting}
         currentBand={currentBand}
         currentUser={currentUser}
       />

@@ -51,7 +51,6 @@ class AddPostingModal extends React.Component {
     const { formSubmit } = this.props;
     const posting = { ...this.state.newPosting };
     posting.bandId = this.props.bandId;
-    posting.postingId = this.props.postingId;
     posting.closed = false;
     formSubmit(posting);
     this.setState({ newPosting: defaultPosting });
@@ -62,20 +61,31 @@ class AddPostingModal extends React.Component {
 
     return (
       <div>
-        <Button className="btn-danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Button className="btn-danger mb-4" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader className="slate" toggle={this.toggle}>Reply:</ModalHeader>
+          <ModalHeader className="slate" toggle={this.toggle}>Create New Posting:</ModalHeader>
           <ModalBody>
           <Form>
             <FormGroup>
-              <Label className="slate" htmlFor="inputMessage">Message:</Label>
+              <Label className="slate" htmlFor="inputInstrumentRequested">Instrument Requested:</Label>
               <Input
                   type="text"
                   className="form-control"
-                  id="inputMessage"
-                  aria-describedby="messageHelp"
-                  value={newPosting.message}
-                  onChange={this.messageChange}
+                  id="instrumentRequested"
+                  aria-describedby="instrumentRequestedHelp"
+                  value={newPosting.instrumentRequested}
+                  onChange={this.instrumentRequestedChange}
+                />
+            </FormGroup>
+            <FormGroup>
+              <Label className="slate" htmlFor="inputDescription">Description:</Label>
+              <Input
+                  type="text"
+                  className="form-control"
+                  id="description"
+                  aria-describedby="descriptionHelp"
+                  value={newPosting.description}
+                  onChange={this.descriptionChange}
                 />
             </FormGroup>
           </Form>

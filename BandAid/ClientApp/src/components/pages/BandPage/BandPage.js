@@ -5,14 +5,15 @@ import {
   Jumbotron,
   Container,
   Table,
-  Button,
 } from 'reactstrap';
 
+import AddPostingModal from '../../Modals/AddPostingModal';
 import MusicianListItem from './MusicianListItem/MusicianListItem';
 import ShindigListItem from './ShindigListItem/ShindigListItem';
 import PostingListItem from './PostingListItem/PostingListItem';
 
 import bandRequests from '../../../helpers/data/bandRequests';
+import postingRequests from '../../../helpers/data/postingRequests';
 
 import './BandPage.scss';
 
@@ -27,7 +28,7 @@ export default class BandPage extends Component {
     userInTheBand: false,
   }
 
-  componentDidMount() {
+  getAllBandInfo = () => {
     bandRequests.getBand(this.state.bandId)
       .then((band) => {
         this.setState({ currentBand: band });
@@ -49,6 +50,10 @@ export default class BandPage extends Component {
       });
   }
 
+  componentDidMount() {
+    this.getAllBandInfo();
+  }
+
   componentWillUnmount() {
     this.setState = {
       bandId: 0,
@@ -57,6 +62,13 @@ export default class BandPage extends Component {
       shindigs: [],
       postings: [],
     };
+  }
+
+  formSubmit = (posting) => {
+    postingRequests.createPosting(posting)
+      .then(() => {
+        this.getAllBandInfo();
+      });
   }
 
   render() {
@@ -96,7 +108,12 @@ export default class BandPage extends Component {
     const makeAddPostingButton = () => {
       if (userInTheBand) {
         return (
-          <Button outline color="danger" className="mb-4" bandId={bandId}>Create a Posting</Button>
+          <AddPostingModal
+            buttonLabel='Add a Posting'
+            className="btn-danger"
+            bandId={bandId}
+            formSubmit={this.formSubmit}
+          />
         );
       } return '';
     };

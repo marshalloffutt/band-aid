@@ -7,6 +7,7 @@ import roleTranslator from '../../../../helpers/roleTranslator';
 export default class PostingListItem extends Component {
   state = {
     posting: this.props.posting,
+    postingId: this.props.posting.id,
     replies: [],
     userInBand: false,
   }
@@ -33,15 +34,25 @@ export default class PostingListItem extends Component {
     this.rosterCheck();
   }
 
-  makeEditButton = () => {
-    if (this.state.userInBand) {
-      return <Button>Edit</Button>;
-    } return '';
-  }
-
   render() {
-    const { posting } = this.props;
+    const { posting, deletePosting } = this.props;
     const { replies } = this.state;
+
+    const deleteEvent = () => {
+      const postingId = posting.id;
+      deletePosting(postingId);
+    };
+
+    const makeEditButtons = () => {
+      if (this.state.userInBand) {
+        return (
+        <div>
+          <Button color="danger">Edit Posting</Button>
+          <Button color="danger" onClick={deleteEvent}>Delete Posting</Button>
+        </div>
+        );
+      } return '';
+    };
 
     const replyComponents = replies.map(reply => (
       <ReplyListItem
@@ -62,7 +73,7 @@ export default class PostingListItem extends Component {
             <ul>
               {replyComponents}
             </ul>
-            {this.makeEditButton()}
+              {makeEditButtons()}
           </div>
         </div>
       </div>

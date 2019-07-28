@@ -5,6 +5,10 @@ const bandAidApiBaseUrl = apiKeys.bandAidApi.apiBaseUrl;
 
 const createPosting = posting => axios.post(`${bandAidApiBaseUrl}/postings/register`, posting);
 
+const updatePosting = (posting, id) => axios.put(`${bandAidApiBaseUrl}/postings/update/${id}`, posting);
+
+const deletePosting = postingId => axios.delete(`${bandAidApiBaseUrl}/postings/delete/${postingId}`);
+
 const getAll = () => new Promise((resolve, reject) => {
   axios.get(`${bandAidApiBaseUrl}/postings/open`)
     .then((result) => {
@@ -18,4 +22,9 @@ const getAll = () => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAll, createPosting };
+export default {
+  getAll,
+  createPosting,
+  updatePosting,
+  deletePosting,
+};

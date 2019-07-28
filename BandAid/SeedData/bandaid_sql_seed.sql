@@ -185,6 +185,7 @@ ALTER TABLE [dbo].[PostingReply] CHECK CONSTRAINT [FK_PostingReply_Musician]
 GO
 ALTER TABLE [dbo].[PostingReply]  WITH CHECK ADD  CONSTRAINT [FK_PostingReply_Posting] FOREIGN KEY([PostingId])
 REFERENCES [dbo].[Posting] ([Id])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[PostingReply] CHECK CONSTRAINT [FK_PostingReply_Posting]
 GO

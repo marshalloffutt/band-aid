@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
+import EditPostingModal from '../../../Modals/EditPostingModal';
 import postingReplyRequests from '../../../../helpers/data/postingReplyRequests';
 import ReplyListItem from '../ReplyListItem/ReplyListItem';
 import roleTranslator from '../../../../helpers/roleTranslator';
+import postingRequests from '../../../../helpers/data/postingRequests';
 
 export default class PostingListItem extends Component {
   state = {
@@ -34,9 +36,17 @@ export default class PostingListItem extends Component {
     this.rosterCheck();
   }
 
+  updatePosting = (postingToUpdate, postingId) => {
+    postingRequests.updatePosting(postingToUpdate, postingId)
+      .then((res) => {
+        const updatedPosting = res.data;
+        this.setState({ posting: updatedPosting });
+      });
+  };
+
   render() {
-    const { posting, deletePosting } = this.props;
-    const { replies } = this.state;
+    const { deletePosting } = this.props;
+    const { replies, posting } = this.state;
 
     const deleteEvent = () => {
       const postingId = posting.id;
@@ -46,9 +56,13 @@ export default class PostingListItem extends Component {
     const makeEditButtons = () => {
       if (this.state.userInBand) {
         return (
-        <div>
-          <Button color="danger">Edit Posting</Button>
-          <Button color="danger" onClick={deleteEvent}>Delete Posting</Button>
+        <div className="d-flex justify-content-around">
+          <EditPostingModal
+            buttonLabel="Edit Posting"
+            posting={posting}
+            updatePosting={this.updatePosting}
+          />
+          <Button color="danger" className="mb-4" onClick={deleteEvent}>Delete Posting</Button>
         </div>
         );
       } return '';

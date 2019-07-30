@@ -5,6 +5,10 @@ const bandAidApiBaseUrl = apiKeys.bandAidApi.apiBaseUrl;
 
 const createShindig = shindig => axios.post(`${bandAidApiBaseUrl}/shindigs/register`, shindig);
 
+const updateShindig = (shindig, id) => axios.put(`${bandAidApiBaseUrl}/shindigs/update/${id}`, shindig);
+
+const deleteShindig = shindigId => axios.delete(`${bandAidApiBaseUrl}/shindigs/delete/${shindigId}`);
+
 const getShindigsUserById = userId => new Promise((resolve, reject) => {
   axios.get(`${bandAidApiBaseUrl}/shindigs/users/${userId}`)
     .then((result) => {
@@ -21,4 +25,6 @@ const getShindigsUserById = userId => new Promise((resolve, reject) => {
 export default {
   getShindigsUserById,
   createShindig,
+  updateShindig,
+  deleteShindig,
 };

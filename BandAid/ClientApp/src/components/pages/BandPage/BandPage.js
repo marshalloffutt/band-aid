@@ -8,10 +8,12 @@ import {
 } from 'reactstrap';
 
 import AddPostingModal from '../../Modals/AddPostingModal';
+import AddShindigModal from '../../Modals/AddShindigModal';
 import MusicianListItem from './MusicianListItem/MusicianListItem';
 import ShindigListItem from './ShindigListItem/ShindigListItem';
 import PostingListItem from './PostingListItem/PostingListItem';
 
+import shindigRequests from '../../../helpers/data/shindigRequests';
 import bandRequests from '../../../helpers/data/bandRequests';
 import postingRequests from '../../../helpers/data/postingRequests';
 
@@ -66,6 +68,13 @@ export default class BandPage extends Component {
 
   formSubmit = (posting) => {
     postingRequests.createPosting(posting)
+      .then(() => {
+        this.getAllBandInfo();
+      });
+  }
+
+  shindigFormSubmit = (shindig) => {
+    shindigRequests.createShindig(shindig)
       .then(() => {
         this.getAllBandInfo();
       });
@@ -126,6 +135,19 @@ export default class BandPage extends Component {
       } return '';
     };
 
+    const makeAddShindigButton = () => {
+      if (userInTheBand) {
+        return (
+          <AddShindigModal
+            buttonLabel='Add an Event'
+            className="btn-danger"
+            bandId={bandId}
+            shindigFormSubmit={this.shindigFormSubmit}
+          />
+        );
+      } return '';
+    };
+
     return (
       <div className="band-page">
         <Jumbotron className="band-jumbotron">
@@ -147,6 +169,7 @@ export default class BandPage extends Component {
           <Row className="mb-4 mt-4">
             <Col md={6}>
             <h3 className="red">Upcoming Events</h3>
+            {makeAddShindigButton()}
             <Table className="white">
               <thead>
                 <tr>

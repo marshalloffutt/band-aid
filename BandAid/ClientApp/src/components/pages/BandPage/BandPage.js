@@ -84,7 +84,16 @@ export default class BandPage extends Component {
     postingRequests.deletePosting(postingId)
       .then(() => {
         this.getAllBandInfo();
-      });
+      })
+      .catch(err => console.error('error in deleting', err));
+  }
+
+  deleteShindig = (shindigId) => {
+    shindigRequests.deleteShindig(shindigId)
+      .then(() => {
+        this.getAllBandInfo();
+      })
+      .catch(err => console.error('error in deleting', err));
   }
 
   render() {
@@ -119,6 +128,8 @@ export default class BandPage extends Component {
       <ShindigListItem
         shindig={shindig}
         key={shindig.id}
+        userInTheBand={userInTheBand}
+        deleteShindig={this.deleteShindig}
       />
     ));
 
@@ -173,6 +184,7 @@ export default class BandPage extends Component {
             <Table className="white">
               <thead>
                 <tr>
+                  <th></th>
                   <th>Date</th>
                   <th>Description</th>
                   <th>Location</th>

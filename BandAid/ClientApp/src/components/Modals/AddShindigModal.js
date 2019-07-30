@@ -11,6 +11,9 @@ import {
   Input,
 } from 'reactstrap';
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 const defaultShindig = {
   description: '',
   eventDate: '',
@@ -56,7 +59,11 @@ class AddShindigModal extends React.Component {
 
   descriptionChange = e => this.formFieldStringState('description', e);
 
-  eventDateChange = e => this.formFieldStringState('eventDate', e);
+  handleEventDateChange = (date) => {
+    const tempShindig = { ...this.state.newShindig };
+    tempShindig.eventDate = new Date(date);
+    this.setState({ newShindig: tempShindig });
+  }
 
   addressChange = e => this.formFieldStringState('address', e);
 
@@ -87,14 +94,23 @@ class AddShindigModal extends React.Component {
           <Form>
             <FormGroup>
               <Label className="slate" htmlFor="inputEventDate">Date:</Label>
-              <Input
+              <DatePicker
+                  selected={this.state.newShindig.eventDate}
+                  onChange={this.handleEventDateChange}
+                  showTimeSelect
+                  timeFormat="h:mm aa"
+                  timeIntervals={15}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  timeCaption="time"
+              />
+              {/* <Input
                   type="text"
                   className="form-control"
                   id="inputEventDate"
                   aria-describedby="eventDateHelp"
                   value={newShindig.eventDate}
                   onChange={this.eventDateChange}
-                />
+                /> */}
             </FormGroup>
             <FormGroup>
               <Label className="slate" htmlFor="inputDescription">Description:</Label>

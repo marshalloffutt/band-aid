@@ -65,9 +65,11 @@ namespace BandAid.Data
             }
         }
 
-        public Shindig AddShindig(string description, DateTime eventDate, string address, 
+        public Shindig AddShindig(string description, DateTime eventDate_bad, string address, 
             string city, string state, int zipcode, bool hasComeToPass, int bandId)
         {
+            DateTime eventDate = eventDate_bad.ToLocalTime();
+
             using (var db = new SqlConnection(_connectionString))
             {
                 var insertQuery = @"

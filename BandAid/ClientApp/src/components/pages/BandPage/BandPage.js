@@ -105,6 +105,14 @@ export default class BandPage extends Component {
       .catch(err => console.error('error in deleting', err));
   }
 
+  editBandFormSubmit = (band, bandId) => {
+    bandRequests.updateBand(band, bandId)
+      .then(() => {
+        this.getAllBandInfo();
+      })
+      .catch(err => console.error('error in updating band', err));
+  }
+
   render() {
     const {
       currentBand,
@@ -162,10 +170,11 @@ export default class BandPage extends Component {
           <EditBandModal
             className="secondary"
             buttonLabel="Edit Band Info"
+            band={currentBand}
             bandId={bandId}
             formSubmit={this.updateBand}
+            updateBand={this.editBandFormSubmit}
           />
-          // <Button className="secondary">secondary</Button>
         );
       } return '';
     };

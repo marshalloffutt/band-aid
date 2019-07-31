@@ -49,13 +49,13 @@ class EditBandModal extends React.Component {
     }));
   }
 
-  nameChange = e => this.formFieldStringState('description', e);
+  nameChange = e => this.formFieldStringState('name', e);
 
-  genreChange = e => this.formFieldStringState('description', e);
+  genreChange = e => this.formFieldStringState('genre', e);
 
   descriptionChange = e => this.formFieldStringState('description', e);
 
-  logoUrlChange = e => this.formFieldStringState('description', e);
+  logoUrlChange = e => this.formFieldStringState('logoUrl', e);
 
   cityChange = e => this.formFieldStringState('city', e);
 

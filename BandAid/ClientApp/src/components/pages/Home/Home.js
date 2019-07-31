@@ -6,9 +6,12 @@ import {
 
 import UserBandListItem from './UserBandListItem/UserBandListItem';
 import UserShindigListItem from './UserShindigListItem/UserShindigListItem';
+import AddBandModal from '../../Modals/AddBandModal';
 
 import userRequests from '../../../helpers/data/userRequests';
 import shindigRequests from '../../../helpers/data/shindigRequests';
+import bandRequests from '../../../helpers/data/bandRequests';
+import bandMemberRequests from '../../../helpers/data/bandMemberRequests';
 
 import './Home.scss';
 
@@ -18,6 +21,7 @@ class Home extends React.Component {
     user: {},
     userBands: [],
     userShindigs: [],
+    myBand: [],
   }
 
   goToPostings = () => {
@@ -51,6 +55,18 @@ class Home extends React.Component {
       userBands: [],
       userShindigs: [],
     };
+  }
+
+  submitNewBand = (band) => {
+    bandRequests.createBand(band)
+      .then((myBand) => {
+        // console.log(myBand);
+        const bandMember = {};
+        bandMember.musicianId = this.state.user.id;
+        bandMember.bandId = myBand.data.id;
+        bandMember.dateJoined = new Date();
+        bandMemberRequests.createBandMember(bandMember);
+      });
   }
 
   render() {
@@ -93,7 +109,12 @@ class Home extends React.Component {
               <Button color="danger" size="large" onClick={this.goToPostings}>Find Your Next Band!</Button>
             </div>
             <div className="mt-4">
-              <Button color="danger" size="large" onClick={this.goToBand}>Start a Band</Button>
+              <AddBandModal
+                color="danger"
+                size="large"
+                buttonLabel="Create a Band"
+                onSubmit={this.submitNewBand}
+                />
             </div>
         </div>
       );

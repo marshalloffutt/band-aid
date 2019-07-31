@@ -47,23 +47,23 @@ class AddBandModal extends React.Component {
     });
   }
 
-  nameChange = e => this.formFieldStringState('description', e);
+  nameChange = e => this.formFieldStringState('name', e);
 
-  genreChange = e => this.formFieldStringState('description', e);
+  genreChange = e => this.formFieldStringState('genre', e);
 
   descriptionChange = e => this.formFieldStringState('description', e);
 
-  logoUrlChange = e => this.formFieldStringState('description', e);
+  logoUrlChange = e => this.formFieldStringState('logoUrl', e);
 
   cityChange = e => this.formFieldStringState('city', e);
 
   stateChange = e => this.formFieldStringState('state', e);
 
-  onSubmit = (e) => {
-    const { bandFormSubmit } = this.props;
+  formSubmit = (e) => {
+    const { onSubmit } = this.props;
     const band = { ...this.state.newBand };
     band.dateCreated = new Date();
-    bandFormSubmit(band);
+    onSubmit(band);
     this.setState({ newBand: defaultBand });
   }
 
@@ -94,9 +94,20 @@ class AddBandModal extends React.Component {
                   type="text"
                   className="form-control"
                   id="inputGenre"
-                  aria-describedby="agenreHelp"
+                  aria-describedby="genreHelp"
                   value={newBand.genre}
                   onChange={this.genreChange}
+                />
+            </FormGroup>
+            <FormGroup>
+              <Label className="slate" htmlFor="inputDescription">Bio:</Label>
+              <Input
+                  type="text"
+                  className="form-control"
+                  id="inputDescription"
+                  aria-describedby="descriptionHelp"
+                  value={newBand.description}
+                  onChange={this.descriptionChange}
                 />
             </FormGroup>
             <FormGroup>
@@ -137,7 +148,7 @@ class AddBandModal extends React.Component {
           <ModalFooter>
           <Button className="btn-danger" onClick={(e) => {
             this.toggle();
-            this.onSubmit();
+            this.formSubmit();
             e.preventDefault();
           }}>Save</Button>{' '}
             <Button className="btn-grey" onClick={this.toggle}>Cancel</Button>

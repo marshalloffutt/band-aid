@@ -32,9 +32,22 @@ class EditShindigModal extends React.Component {
     this.state = {
       modal: false,
       newShindig: defaultShindig,
+      newDate: '',
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      newDate: new Date(this.props.shindig.eventDate),
+    });
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      newDate: new Date(props.shindig.eventDate),
+    });
   }
 
   formFieldStringState = (name, e) => {
@@ -61,9 +74,11 @@ class EditShindigModal extends React.Component {
   descriptionChange = e => this.formFieldStringState('description', e);
 
   handleEventDateChange = (date) => {
-    const tempShindig = { ...this.state.newShindig };
-    tempShindig.eventDate = new Date(date);
-    this.setState({ newShindig: tempShindig });
+    // const tempShindig = { ...this.state.newShindig };
+    this.setState({ newDate: date });
+    // tempShindig.eventDate = this.state.newDate;
+    // tempShindig.eventDate = new Date(date);
+    // this.setState({ newShindig: tempShindig });
   }
 
   addressChange = e => this.formFieldStringState('address', e);
@@ -74,11 +89,12 @@ class EditShindigModal extends React.Component {
 
   zipcodeChange = e => this.formFieldNumberState('zipcode', e)
 
-  onSubmit = (e) => {
-    const { updateShindig } = this.props;
+  formSubmit = (e) => {
+    const { onSubmit } = this.props;
     const shindigToUpdate = { ...this.state.newShindig };
+    shindigToUpdate.eventDate = this.state.newDate;
     const shindigId = this.props.shindig.id;
-    updateShindig(shindigToUpdate, shindigId);
+    onSubmit(shindigToUpdate, shindigId);
     this.setState({ newShindig: defaultShindig });
   }
 
@@ -87,7 +103,9 @@ class EditShindigModal extends React.Component {
 
     return (
       <div>
-        <Button color="danger" className="mb-4" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <button className="btn btn-default" onClick={this.toggle}>
+              <i className="fas fa-pencil-alt icon"></i>
+          </button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader className="slate" toggle={this.toggle}>Edit Shindig:</ModalHeader>
           <ModalBody>
@@ -95,7 +113,7 @@ class EditShindigModal extends React.Component {
           <FormGroup>
               <Label className="slate" htmlFor="inputEventDate">Date:</Label>
               <DatePicker
-                  selected={this.state.newShindig.eventDate}
+                  selected={this.state.newDate}
                   onChange={this.handleEventDateChange}
                   showTimeSelect
                   timeFormat="h:mm aa"
@@ -164,8 +182,7 @@ class EditShindigModal extends React.Component {
           <ModalFooter>
           <Button className="btn-danger" onClick={(e) => {
             this.toggle();
-            this.formSubmitEvent();
-            e.preventDefault();
+            this.formSubmit();
           }}>Save</Button>{' '}
             <Button className="btn-grey" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>

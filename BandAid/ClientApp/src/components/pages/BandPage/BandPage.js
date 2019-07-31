@@ -80,6 +80,14 @@ export default class BandPage extends Component {
       });
   }
 
+  editShindigFormSubmit = (shindig, shindigId) => {
+    shindigRequests.updateShindig(shindig, shindigId)
+      .then(() => {
+        this.getAllBandInfo();
+      })
+      .catch(err => console.error('error in updating', err));
+  }
+
   deletePosting = (postingId) => {
     postingRequests.deletePosting(postingId)
       .then(() => {
@@ -130,6 +138,7 @@ export default class BandPage extends Component {
         key={shindig.id}
         userInTheBand={userInTheBand}
         deleteShindig={this.deleteShindig}
+        editShindigFormSubmit={this.editShindigFormSubmit}
       />
     ));
 

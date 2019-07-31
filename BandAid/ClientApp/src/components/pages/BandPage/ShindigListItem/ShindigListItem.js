@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+import EditShindigModal from '../../../Modals/EditShindigModal';
+
 import './ShindigListItem.scss';
 
 export default class ShindigListItem extends Component {
@@ -12,7 +14,7 @@ export default class ShindigListItem extends Component {
   }
 
   render() {
-    const { shindig } = this.props;
+    const { shindig, editShindigFormSubmit } = this.props;
 
     const makeButtons = () => {
       if (this.props.userInTheBand) {
@@ -21,9 +23,10 @@ export default class ShindigListItem extends Component {
           <button className="btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt icon"></i>
           </button>
-          <button className="btn btn-default" onClick={this.editEvent}>
-              <i className="fas fa-pencil-alt icon"></i>
-          </button>
+          <EditShindigModal
+            shindig={this.props.shindig}
+            onSubmit={editShindigFormSubmit}
+          />
         </td>
         );
       } return '';

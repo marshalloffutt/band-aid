@@ -5,6 +5,7 @@ import {
   Jumbotron,
   Container,
   Table,
+  Button,
 } from 'reactstrap';
 
 import AddPostingModal from '../../Modals/AddPostingModal';
@@ -155,6 +156,14 @@ export default class BandPage extends Component {
       } return '';
     };
 
+    const makeEditBandButton = () => {
+      if (userInTheBand) {
+        return (
+          <Button color="secondary">secondary</Button>
+        );
+      } return '';
+    };
+
     const makeAddShindigButton = () => {
       if (userInTheBand) {
         return (
@@ -171,9 +180,10 @@ export default class BandPage extends Component {
     return (
       <div className="band-page">
         <Jumbotron className="band-jumbotron">
-          <h1 className="is-1 mt-5">{currentBand.name}</h1>
+          <h1 className="is-1 mt-3">{currentBand.name}</h1>
           <h5>{currentBand.genre}</h5>
           <h5>{currentBand.city}, {currentBand.state}</h5>
+          {makeEditBandButton()}
         </Jumbotron>
         <Container>
           <Row>

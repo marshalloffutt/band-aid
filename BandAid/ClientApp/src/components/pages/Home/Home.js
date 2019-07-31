@@ -60,7 +60,6 @@ class Home extends React.Component {
   submitNewBand = (band) => {
     bandRequests.createBand(band)
       .then((myBand) => {
-        // console.log(myBand);
         const bandMember = {};
         bandMember.musicianId = this.state.user.id;
         bandMember.bandId = myBand.data.id;

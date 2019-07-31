@@ -21,6 +21,15 @@ body {
   }
 }
 
+.btn-secondary {
+  border-radius: 40px !important;
+  background-color: $base02;
+  border-color: $base02;
+  &:hover {
+    background-color: $base04;
+  }
+}
+
 .btn-grey {
   border-radius: 40px !important;
   background-color: $white-darkest;
@@ -45,5 +54,14 @@ body {
   color: $red;
   &:hover {
     background-color: $red;
+  }
+}
+
+.btn-outline-secondary {
+  border-radius: 40px !important;
+  border-color: $base02;
+  color: $base02;
+  &:hover {
+    background-color: $base02;
   }
 }

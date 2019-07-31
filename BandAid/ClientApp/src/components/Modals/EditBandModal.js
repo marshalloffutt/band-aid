@@ -74,7 +74,7 @@ class EditBandModal extends React.Component {
 
     return (
       <div>
-        <Button color="danger" className="mb-4" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Button className="secondary mb-4" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader className="slate" toggle={this.toggle}>Edit Band:</ModalHeader>
           <ModalBody>

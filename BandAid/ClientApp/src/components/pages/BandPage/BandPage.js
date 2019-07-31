@@ -5,10 +5,10 @@ import {
   Jumbotron,
   Container,
   Table,
-  Button,
 } from 'reactstrap';
 
 import AddPostingModal from '../../Modals/AddPostingModal';
+import EditBandModal from '../../Modals/EditBandModal';
 import AddShindigModal from '../../Modals/AddShindigModal';
 import MusicianListItem from './MusicianListItem/MusicianListItem';
 import ShindigListItem from './ShindigListItem/ShindigListItem';
@@ -159,7 +159,13 @@ export default class BandPage extends Component {
     const makeEditBandButton = () => {
       if (userInTheBand) {
         return (
-          <Button color="secondary">secondary</Button>
+          <EditBandModal
+            className="secondary"
+            buttonLabel="Edit Band Info"
+            bandId={bandId}
+            formSubmit={this.updateBand}
+          />
+          // <Button className="secondary">secondary</Button>
         );
       } return '';
     };

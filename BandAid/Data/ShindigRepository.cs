@@ -108,8 +108,11 @@ namespace BandAid.Data
             throw new Exception("Could not create shindig");
         }
 
-        public Shindig Update(Shindig shindigToUpdate)
+        public bool Update(int id, string description, DateTime eventDate_bad, string address,
+            string city, string state, int zipcode, bool hasComeToPass, int bandId)
         {
+            DateTime eventDate = eventDate_bad.ToLocalTime();
+
             using (var db = new SqlConnection(_connectionString))
             {
                 var updateQuery = @"
@@ -124,11 +127,24 @@ namespace BandAid.Data
                             bandId = @bandid
                         Where id = @id";
 
-                var rowsAffected = db.Execute(updateQuery, shindigToUpdate);
+                var parameters = new
+                {
+                    Id = id,
+                    Description = description,
+                    EventDate = eventDate,
+                    Address = address,
+                    City = city,
+                    State = state,
+                    Zipcode = zipcode,
+                    HasComeToPass = hasComeToPass,
+                    BandId = bandId
+                };
+
+                var rowsAffected = db.Execute(updateQuery, parameters);
 
                 if (rowsAffected == 1)
                 {
-                    return shindigToUpdate;
+                    return true;
                 }
 
                 else throw new Exception("Could not update shindig");

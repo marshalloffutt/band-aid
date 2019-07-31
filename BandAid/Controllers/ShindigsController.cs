@@ -63,9 +63,10 @@ namespace BandAid.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public ActionResult update(Shindig shindig)
+        public ActionResult update(int id, CreateShindigRequest updateRequest)
         {
-            var updatedShindig = _shindigRepository.Update(shindig);
+            var updatedShindig = _shindigRepository.Update(id, updateRequest.Description, updateRequest.EventDate, 
+                updateRequest.Address, updateRequest.City, updateRequest.State, updateRequest.Zipcode, updateRequest.HasComeToPass, updateRequest.BandId);
 
             return Ok(updatedShindig);
         }

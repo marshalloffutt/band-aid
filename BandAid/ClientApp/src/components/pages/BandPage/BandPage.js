@@ -200,7 +200,7 @@ export default class BandPage extends Component {
     const makeAddBandMemberButton = () => {
       if (userInTheBand) {
         return (
-          <Button className="secondary" bandId={bandId} onClick={this.goToMusicians}> Find Band Members </Button>
+          <Button className="secondary" onClick={this.goToMusicians}> Find Band Members </Button>
         );
       } return '';
     };

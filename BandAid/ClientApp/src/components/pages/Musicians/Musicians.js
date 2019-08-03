@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Table } from 'reactstrap';
 import MusicianTableItem from './MusicianTableItem/MusicianTableItem';
+
+import bandMemberRequests from '../../../helpers/data/bandMemberRequests';
 import userRequests from '../../../helpers/data/userRequests';
 
 export default class Musicians extends Component {
@@ -12,21 +14,31 @@ export default class Musicians extends Component {
   }
 
   componentDidMount() {
+    userRequests.getUser()
+      .then((currentUser) => {
+        this.setState({ currentUser });
+        this.setState({ userBands: currentUser.bands });
+        if (currentUser.bands.count !== 0) {
+          this.setState({ selectedBand: currentUser.bands[0] });
+        }
+      });
     userRequests.getAllUsers()
-      .then((musicians) => {
+      .then((allMusicians) => {
+        const musicians = allMusicians
+          .filter(musician => musician.id !== this.state.currentUser.id);
         this.setState({ musicians });
-        userRequests.getUser()
-          .then((currentUser) => {
-            this.setState({ currentUser });
-            this.setState({ userBands: currentUser.bands });
-            if (currentUser.bands.count !== 0) {
-              this.setState({ selectedBand: currentUser.bands[0] });
-            }
-          });
       })
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  addBandMember = (musicianId) => {
+    const newBandMember = {};
+    newBandMember.musicianId = musicianId;
+    newBandMember.bandId = this.state.selectedBand.id;
+    newBandMember.dateJoined = new Date();
+    bandMemberRequests.createBandMember(newBandMember);
   }
 
   render() {
@@ -36,6 +48,7 @@ export default class Musicians extends Component {
       <MusicianTableItem
         musician={musician}
         key={musician.id}
+        addBandMember={this.addBandMember}
       />
     ));
     return (
@@ -45,6 +58,7 @@ export default class Musicians extends Component {
           <Table className="white">
             <thead>
               <tr>
+                <th>Add:</th>
                 <th>Name</th>
                 <th>Instrument</th>
                 <th>Location</th>

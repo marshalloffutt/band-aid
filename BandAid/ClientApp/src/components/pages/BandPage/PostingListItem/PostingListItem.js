@@ -52,7 +52,7 @@ export default class PostingListItem extends Component {
   }
 
   render() {
-    const { deletePosting } = this.props;
+    const { deletePosting, currentBand, acceptApplicant } = this.props;
     const { replies, posting } = this.state;
 
     const deleteEvent = () => {
@@ -80,6 +80,8 @@ export default class PostingListItem extends Component {
         reply={reply}
         key={reply.id}
         rejectReply={this.rejectReply}
+        currentBand={currentBand}
+        acceptApplicant={acceptApplicant}
       />
     ));
 

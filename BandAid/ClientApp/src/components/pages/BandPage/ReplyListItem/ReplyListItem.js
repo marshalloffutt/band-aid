@@ -15,6 +15,14 @@ export default class ReplyListItem extends Component {
               <h5 className="card-title">{moment(reply.DateCreated).format('MMM Do YYYY')}</h5>
               <Link className="card-text" to={{ pathname: `/musicians/${reply.UserId}`, state: { id } }}>{reply.firstname} {reply.lastname}: </Link>
               <p className="card-text">{reply.message}</p>
+              <div className="d-flex justify-content-center">
+                <button className="btn btn-default">
+                  <i className="fas fa-check confirm-icon fa-3x"></i>
+                </button>
+                <button className="btn btn-default">
+                  <i className="fas fa-times reject-icon fa-3x"></i>
+                </button>
+              </div>
             </div>
         </li>
     );

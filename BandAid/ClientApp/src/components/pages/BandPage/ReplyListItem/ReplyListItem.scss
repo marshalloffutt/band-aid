@@ -17,3 +17,17 @@
       border-color: $slate;
   }
 }
+
+.confirm-icon {
+  color: $blue;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.reject-icon {
+  color: $red;
+  &:hover {
+    transform: scale(1.05);
+  }
+}

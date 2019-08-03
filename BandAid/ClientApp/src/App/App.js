@@ -18,6 +18,7 @@ import MyNavbar from '../components/MyNavbar/MyNavbar';
 import YourProfile from '../components/pages/YourProfile/YourProfile';
 import BandPage from '../components/pages/BandPage/BandPage';
 import MusicianPage from '../components/pages/MusicianPage/MusicianPage';
+import Musicians from '../components/pages/Musicians/Musicians';
 
 import './App.scss';
 import userRequests from '../helpers/data/userRequests';
@@ -92,6 +93,7 @@ class App extends React.Component {
                 <PrivateRoute path='/bands' exact component={Bands} currentUser={this.state.currentUser} authed={this.state.authed} />
                 <PrivateRoute path='/bands/:id' exact component={BandPage} currentUser={this.state.currentUser} authed={this.state.authed} />
                 <PrivateRoute path='/profile/:id' component={YourProfile} currentUser={this.state.currentUser} authed={this.state.authed} />
+                <PrivateRoute path='/musicians' exact component={Musicians} currentUser={this.state.currentUser} authed={this.state.authed} />
                 <PrivateRoute path='/musicians/:id' component={MusicianPage} currentUser={this.state.currentUser} authed={this.state.authed} />
                 <PublicRoute path='/auth' exact component={Auth} authed={this.state.authed} />
               </Switch>

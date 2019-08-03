@@ -10,16 +10,22 @@ Registration
 ![Regitration](/BandAid/images/register.png)
 
 Home
-![Home](/BandAid/images/home.png)
+![Home](/BandAid/images/home-page.png)
 
 Bands View
-![Bands](/BandAid/images/bands.png)
+![Bands](/BandAid/images/bands-page.png)
 
 Single Band View
-![Single](/BandAid/images/single-band.png)
+![Band](/BandAid/images/single-band-page.png)
+
+Single Musician View
+![Musician](/BandAid/images/single-musicianm-page.png)
 
 Postings View
-![Posting](/BandAid/images/postings.png)
+![Posting](/BandAid/images/postings-page.png)
+
+User Profile
+![Profile](/BandAid/images/your-profile-page.png)
 
 ## Technologies Used
 * C#

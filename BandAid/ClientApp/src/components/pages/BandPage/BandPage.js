@@ -5,6 +5,7 @@ import {
   Jumbotron,
   Container,
   Table,
+  Button,
 } from 'reactstrap';
 
 import AddPostingModal from '../../Modals/AddPostingModal';
@@ -30,6 +31,10 @@ export default class BandPage extends Component {
     shindigs: [],
     postings: [],
     userInTheBand: false,
+  }
+
+  goToMusicians = () => {
+    this.props.history.push('/musicians');
   }
 
   getAllBandInfo = () => {
@@ -192,6 +197,14 @@ export default class BandPage extends Component {
       } return '';
     };
 
+    const makeAddBandMemberButton = () => {
+      if (userInTheBand) {
+        return (
+          <Button className="secondary" bandId={bandId} onClick={this.goToMusicians}> Find Band Members </Button>
+        );
+      } return '';
+    };
+
     const makeAddShindigButton = () => {
       if (userInTheBand) {
         return (
@@ -212,6 +225,7 @@ export default class BandPage extends Component {
           <h5>{currentBand.genre}</h5>
           <h5>{currentBand.city}, {currentBand.state}</h5>
           {makeEditBandButton()}
+          {makeAddBandMemberButton()}
         </Jumbotron>
         <Container>
           <Row>

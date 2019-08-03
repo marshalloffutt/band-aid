@@ -142,5 +142,24 @@ namespace BandAid.Data
 
             throw new Exception("Could not get posting replies for posting");
         }
+
+        public PostingReply DeletePostingReply(int replyId)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var deletedReply = db.QueryFirstOrDefault<PostingReply>(@"
+                    Delete from [PostingReply]
+                    Output deleted.*
+                    Where Id = @replyId",
+                    new { replyId });
+
+                if (deletedReply != null)
+                {
+                    return deletedReply;
+                }
+            }
+
+            throw new Exception("Could not delete reply");
+        }
     }
 }

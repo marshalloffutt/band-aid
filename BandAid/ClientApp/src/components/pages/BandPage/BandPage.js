@@ -17,6 +17,7 @@ import PostingListItem from './PostingListItem/PostingListItem';
 import shindigRequests from '../../../helpers/data/shindigRequests';
 import bandRequests from '../../../helpers/data/bandRequests';
 import postingRequests from '../../../helpers/data/postingRequests';
+import bandMemberRequests from '../../../helpers/data/bandMemberRequests';
 
 import './BandPage.scss';
 
@@ -113,6 +114,17 @@ export default class BandPage extends Component {
       .catch(err => console.error('error in updating band', err));
   }
 
+  acceptApplicant = (bandMember, postingId) => {
+    bandMemberRequests.createBandMember(bandMember)
+      .then(() => {
+        postingRequests.deletePosting(postingId)
+          .then(() => {
+            this.getAllBandInfo();
+          });
+      })
+      .catch(err => console.error('error in accepting applicant', err));
+  }
+
   render() {
     const {
       currentBand,
@@ -138,6 +150,7 @@ export default class BandPage extends Component {
         deletePosting={this.deletePosting}
         currentBand={currentBand}
         currentUser={currentUser}
+        acceptApplicant={this.acceptApplicant}
       />
     ));
 

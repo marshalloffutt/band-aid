@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-// import { Container } from 'reactstrap';
 import BandListItem from './BandListItem/BandListItem';
-// import userRequests from '../../../helpers/data/userRequests';
 import bandRequests from '../../../helpers/data/bandRequests';
-import './Bands.scss';
 
 export default class Bands extends Component {
   state = {

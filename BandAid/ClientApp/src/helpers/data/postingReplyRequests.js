@@ -18,7 +18,10 @@ const getRepliesOnPosting = postingId => new Promise((resolve, reject) => {
     });
 });
 
+const deletePostingReply = replyId => axios.delete(`${bandAidApiBaseUrl}/postingreplies/delete/${replyId}`);
+
 export default {
   createPostingReply,
   getRepliesOnPosting,
+  deletePostingReply,
 };

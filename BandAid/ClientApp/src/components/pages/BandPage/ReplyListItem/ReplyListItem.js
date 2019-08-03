@@ -6,8 +6,14 @@ import './ReplyListItem.scss';
 
 export default class ReplyListItem extends Component {
   render() {
-    const { reply } = this.props;
+    const { reply, rejectReply } = this.props;
     const id = reply.UserId;
+
+    const deleteReplyEvent = (e) => {
+      e.preventDefault();
+      const replyId = this.props.reply.id;
+      rejectReply(replyId);
+    };
 
     return (
         <li className="card reply-item">
@@ -19,7 +25,7 @@ export default class ReplyListItem extends Component {
                 <button className="btn btn-default">
                   <i className="fas fa-check confirm-icon fa-3x"></i>
                 </button>
-                <button className="btn btn-default">
+                <button className="btn btn-default" onClick={deleteReplyEvent}>
                   <i className="fas fa-times reject-icon fa-3x"></i>
                 </button>
               </div>

@@ -74,5 +74,13 @@ namespace BandAid.Controllers
             return Ok(replies);
         }
 
+        [HttpDelete("delete/{replyId}")]
+        public ActionResult delete(int replyId)
+        {
+            var replyToDelete = _postingReplyRepository.DeletePostingReply(replyId);
+
+            return Ok(replyToDelete);
+        }
+
     }
 }

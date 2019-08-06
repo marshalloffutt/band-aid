@@ -5,27 +5,28 @@ import MusicianTableItem from './MusicianTableItem/MusicianTableItem';
 import bandMemberRequests from '../../../helpers/data/bandMemberRequests';
 import userRequests from '../../../helpers/data/userRequests';
 
+import './Musicians.scss';
+
 export default class Musicians extends Component {
   state = {
     musicians: [],
     currentUser: [],
-    userBands: [],
-    selectedBand: {},
+    currentBand: this.props.location.state.band.currentBand,
   }
 
   componentDidMount() {
     userRequests.getUser()
       .then((currentUser) => {
         this.setState({ currentUser });
-        this.setState({ userBands: currentUser.bands });
-        if (currentUser.bands.count !== 0) {
-          this.setState({ selectedBand: currentUser.bands[0] });
-        }
       });
     userRequests.getAllUsers()
-      .then((allMusicians) => {
-        const musicians = allMusicians
-          .filter(musician => musician.id !== this.state.currentUser.id);
+      .then((registeredMusicians) => {
+        const bandMusicians = [...this.state.currentBand.musicians];
+
+        // filter musicians where we cannot find matching id's
+        const musicians = registeredMusicians
+          .filter(musician => !bandMusicians
+            .find(bandMusician => bandMusician.id === musician.id));
         this.setState({ musicians });
       })
       .catch((error) => {
@@ -36,13 +37,13 @@ export default class Musicians extends Component {
   addBandMember = (musicianId) => {
     const newBandMember = {};
     newBandMember.musicianId = musicianId;
-    newBandMember.bandId = this.state.selectedBand.id;
+    newBandMember.bandId = this.state.currentBand.id;
     newBandMember.dateJoined = new Date();
     bandMemberRequests.createBandMember(newBandMember);
   }
 
   render() {
-    const { musicians } = this.state;
+    const { musicians, currentBand } = this.state;
 
     const musicianComponents = musicians.map(musician => (
       <MusicianTableItem
@@ -55,6 +56,14 @@ export default class Musicians extends Component {
       <div>
         <h1 className="title is-1 mt-5 red mb-4">Musicians</h1>
         <Container>
+          <Container className="mb-4">
+          <img
+            id={currentBand.id}
+            className="band-logo-card-sm"
+            src={currentBand.logoUrl}
+            alt={currentBand.name}
+          />
+          </Container>
           <Table className="white">
             <thead>
               <tr>

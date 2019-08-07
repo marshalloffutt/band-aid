@@ -6,19 +6,17 @@ import bandMemberRequests from '../../../helpers/data/bandMemberRequests';
 import userRequests from '../../../helpers/data/userRequests';
 
 import './Musicians.scss';
+import bandRequests from '../../../helpers/data/bandRequests';
 
 export default class Musicians extends Component {
   state = {
     musicians: [],
     currentUser: [],
-    currentBand: this.props.location.state.band.currentBand,
+    bandId: this.props.location.state.band.currentBand.id,
+    currentBand: [],
   }
 
-  componentDidMount() {
-    userRequests.getUser()
-      .then((currentUser) => {
-        this.setState({ currentUser });
-      });
+  getAvailableMusicians = () => {
     userRequests.getAllUsers()
       .then((registeredMusicians) => {
         const bandMusicians = [...this.state.currentBand.musicians];
@@ -28,18 +26,36 @@ export default class Musicians extends Component {
           .filter(musician => !bandMusicians
             .find(bandMusician => bandMusician.id === musician.id));
         this.setState({ musicians });
-      })
-      .catch((error) => {
-        console.error(error);
+      });
+  }
+
+  getCurrentBand = (bandId) => {
+    bandRequests.getBand(this.state.currentBand.id)
+      .then((band) => {
+        this.setState({ currentBand: band });
+      });
+  }
+
+  componentDidMount() {
+    userRequests.getUser()
+      .then((currentUser) => {
+        this.setState({ currentUser });
+        bandRequests.getBand(this.state.bandId)
+          .then((band) => {
+            this.setState({ currentBand: band }, this.getAvailableMusicians);
+          });
       });
   }
 
   addBandMember = (musicianId) => {
     const newBandMember = {};
+    const bandId = this.state.currentBand.id;
     newBandMember.musicianId = musicianId;
-    newBandMember.bandId = this.state.currentBand.id;
+    newBandMember.bandId = bandId;
     newBandMember.dateJoined = new Date();
-    bandMemberRequests.createBandMember(newBandMember);
+    bandMemberRequests.createBandMember(newBandMember)
+      .then(() => this.getCurrentBand(bandId))
+      .then(this.getAvailableMusicians);
   }
 
   render() {

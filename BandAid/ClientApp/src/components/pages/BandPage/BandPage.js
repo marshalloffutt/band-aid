@@ -8,6 +8,8 @@ import {
   Button,
 } from 'reactstrap';
 
+import { Link } from 'react-router-dom';
+
 import AddPostingModal from '../../Modals/AddPostingModal';
 import EditBandModal from '../../Modals/EditBandModal';
 import AddShindigModal from '../../Modals/AddShindigModal';
@@ -200,7 +202,9 @@ export default class BandPage extends Component {
     const makeAddBandMemberButton = () => {
       if (userInTheBand) {
         return (
-          <Button className="secondary" bandId={bandId} onClick={this.goToMusicians}> Find Band Members </Button>
+          <Link to={{ pathname: '/musicians', state: { band: { currentBand } } }}>
+            <Button className="secondary"> Find Band Members </Button>
+          </Link>
         );
       } return '';
     };
